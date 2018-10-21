@@ -17,8 +17,8 @@ def get_d3mds(dataset, path, phase, problem):
     config = build_config(dataset, path, phase, problem)
     dataset_key = 'training' if phase == 'TRAIN' else 'test'
     d3mds = D3MDS(
-        datasetPath=config[dataset_key + '_data_root'],
-        problemPath=config['problem_root']
+        dataset=config[dataset_key + '_data_root'],
+        problem=config['problem_root']
     )
     return d3mds
 
@@ -27,8 +27,8 @@ def get_dataset_stats(dataset, path, problem):
     train_d3mds = get_d3mds(dataset, path, 'TRAIN', problem)
     test_d3mds = get_d3mds(dataset, path, 'TEST', problem)
 
-    train_shape = train_d3mds.get_data(False).shape
-    test_shape = test_d3mds.get_data(False).shape
+    train_shape = train_d3mds.get_data()[0].shape
+    test_shape = test_d3mds.get_data()[0].shape
 
     size = disk_usage(os.path.join(path, dataset, dataset + '_dataset'))
     size_human = disk_usage(os.path.join(path, dataset, dataset + '_dataset'), True)

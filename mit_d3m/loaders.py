@@ -132,154 +132,205 @@ class TabularLoader(Loader):
             return 'categorical'
 
     @classmethod
-    def load_timeseries(cls, learning_data, timeseries_column, timeseries_res_path):
+    def analyze_columns(cls, columns_list, data):
+        columns = dict()
+        index = None
+        time_index = None
+        targets = []
 
-        dataframes = []
-        for d3m_index, row in learning_data.iterrows():
-            filename = row[timeseries_column]
-            df = pd.read_csv(os.path.join(timeseries_res_path, filename))
-            df['d3mIndex'] = d3m_index
-            dataframes.append(df)
+        for column in columns_list:
+            column_name = column['colName']
 
-        index_column = "timeseries_index"
+            if 'suggestedTarget' in column['role']:
+                targets.append(column_name)
 
-        full_df = pd.concat(dataframes)
-        full_df.reset_index(inplace=True, drop=True)
-        full_df.index.name = index_column
-        full_df.reset_index(inplace=True, drop=False)
+            else:
+                columns[column_name] = column
+
+                if 'index' in column['role']:
+                    if index:
+                        raise ValueError("Multiple indexes found")
+
+                    index = column_name
+
+                if 'timeIndicator' in column['role']:
+                    if time_index:
+                        raise ValueError("Multiple indexes found")
+
+                    time_index = column_name
+
+        if index:
+            data.set_index(index, drop=False, inplace=True)
+
+        if targets:
+            data.drop(targets, axis=1, errors='ignore', inplace=True)
+
+        return columns, index, time_index
+
+    @classmethod
+    def build_columns(cls, data, name):
+        index = cls.make_index(data, name)
 
         columns = {
-            column: {
-                'colIndex': index,
-                'colName': column,
-                'colType': cls.map_dtype_to_d3m_type(full_df[column].dtype)
+            column_name: {
+                'colIndex': column_index,
+                'colName': column_name,
+                'colType': cls.map_dtype_to_d3m_type(data[column_name].dtype)
             }
-            for index, column in enumerate(full_df)
+            for column_index, column_name in enumerate(data)
         }
 
         time_index = None
-        if 'time' in full_df.columns:
+        if 'time' in data.columns:
             time_index = 'time'
 
+        return columns, index, time_index
+
+    @classmethod
+    def get_columns(cls, resource, data, name):
+        columns = resource.get('columns')
+        if columns:
+            columns, index, time_index = cls.analyze_columns(columns, data)
+            if not index:
+                index = cls.make_index(data, name)
+
+            return columns, index, time_index
+
+        else:
+            return cls.build_columns(data, name)
+
+    @classmethod
+    def load_table(cls, dataset_root, resource):
+        table_path = os.path.join(dataset_root, resource['resPath'])
+        table_name = os.path.basename(table_path).split('.')[0]
+
+        dirname = os.path.basename(os.path.normpath(os.path.dirname(table_path)))
+        if dirname != 'tables':
+            raise ValueError("Found a table out of the tables folder!")
+
+        data = pd.read_csv(table_path)
+
+        columns, index, time_index = cls.get_columns(resource, data, table_name)
+
         return {
+            'resource_id': resource['resID'],
+            'table_name': table_name,
             'columns': columns,
-            'data': full_df,
-            'index': index_column,
+            'data': data,
+            'index': index,
             'time_index': time_index
         }
 
     @staticmethod
-    def get_timeseries_column(timeseries_res_id, learning_data_columns):
-        for name, details in learning_data_columns.items():
-            refers_to = details.get('refersTo', dict()).get('resID')
-            if refers_to == timeseries_res_id:
-                return name
+    def get_parent(resource_id, tables):
+        for table in tables.values():
+            for column, details in table['columns'].items():
+                refers_to = details.get('refersTo', dict()).get('resID')
+                if refers_to == resource_id:
+                    return table, column
+
+    @staticmethod
+    def get_collection_details(dataset_root, resource):
+        collection_path = os.path.join(dataset_root, resource['resPath'])
+        if collection_path.endswith('/'):
+            collection_path = collection_path[:-1]
+
+        collection_name = os.path.basename(collection_path).split('.')[0]
+
+        return collection_name, collection_path
 
     @classmethod
-    def load_tables(cls, d3mds):
-        """Load tables and timeseries as DataFrames."""
+    def load_collection_data(cls, path, parent_table, parent_column):
 
-        tables = dict()
+        parent_data = parent_table['data']
+        parent_index_name = parent_table['index']
+
+        dataframes = []
+        for parent_index, row in parent_data.iterrows():
+            filename = row[parent_column]
+            df = pd.read_csv(os.path.join(path, filename))
+            df[parent_index_name] = parent_index
+            dataframes.append(df)
+
+        del parent_data[parent_column]
+
+        return pd.concat(dataframes, ignore_index=True)
+
+    @staticmethod
+    def make_index(data, name):
+        index_name = name + '_id'
+        while index_name in data.columns:
+            index_name += '_id'
+
+        data.index.name = index_name
+
+        data.reset_index(inplace=True, drop=False)
+
+        return index_name
+
+    @classmethod
+    def load_collection(cls, tables, dataset_root, resource):
+        parent_table, parent_column = cls.get_parent(
+            resource['resID'],
+            tables
+        )
+
+        table_name, path = cls.get_collection_details(dataset_root, resource)
+
+        data = cls.load_collection_data(path, parent_table, parent_column)
+
+        columns, index, time_index = cls.get_columns(resource, data, table_name)
+
+        return {
+            'resource_id': resource['resID'],
+            'table_name': table_name,
+            'columns': columns,
+            'data': data,
+            'index': index,
+            'time_index': time_index
+        }
+
+        return table
+
+    @staticmethod
+    def get_resources(d3mds):
         main_table = None
-        timeseries = None
+        resources = list()
 
-        for res in d3mds.dataset_doc['dataResources']:
-
-            res_path = res['resPath']
-            res_type = res['resType']
-            res_id = res['resID']
-
-            table_name = res_path.split('.')[0]
-            table_name = table_name.replace("tables/", "")
-            if table_name.endswith('/'):
-                table_name = table_name[:-1]
-
-            dirname = os.path.basename(os.path.normpath(os.path.dirname(res_path)))
-
-            if res_type == 'table' and dirname == 'tables':
-
-                columns = dict()
-                index_column = None
-                time_index_column = None
-                target_column = None
-
-                for column in res['columns']:
-                    column_name = column['colName']
-
-                    if 'suggestedTarget' in column['role']:
-                        if target_column:
-                            raise ValueError("Multiple targets found")
-
-                        target_column = column_name
-
-                    else:
-
-                        columns[column_name] = column
-                        if 'index' in column['role']:
-                            if index_column:
-                                raise ValueError("Multiple indexes found")
-
-                            index_column = column_name
-
-                        if 'timeIndicator' in column['role']:
-                            if time_index_column:
-                                raise ValueError("Multiple indexes found")
-
-                            time_index_column = column_name
-
-                df = pd.read_csv(os.path.join(d3mds.dataset_root, res_path))
-
-                if index_column:
-                    df.set_index(index_column, drop=False, inplace=True)
-
-                if target_column:
-                    df.drop(target_column, axis=1, errors='ignore', inplace=True)
-
-                table = {
-                    'res_id': res_id,
-                    'table_name': table_name,
-                    'columns': columns,
-                    'data': df,
-                    'index': index_column,
-                    'time_index': time_index_column
-                }
-
-                if 'learningData.csv' in res_path:
-                    main_table = table
-                    table['main'] = True
-                else:
-                    table['main'] = False
-
-                tables[res_id] = table
-
-            elif res_type == 'timeseries':
-                timeseries = {
-                    'res_path': os.path.join(d3mds.dataset_root, res_path),
-                    'res_id': res_id,
-                    'table_name': table_name
-                }
+        for resource in d3mds.dataset_doc['dataResources']:
+            if 'learningData.csv' in resource['resPath']:
+                main_table = resource
+            else:
+                resources.append(resource)
 
         if main_table is None:
             raise RuntimeError('Main table not found')
 
-        if timeseries:
-            timeseries_res_id = timeseries['res_id']
+        return main_table, resources
 
-            timeseries_column = cls.get_timeseries_column(
-                timeseries_res_id,
-                main_table['columns']
-            )
+    @classmethod
+    def load_tables(cls, d3mds):
+        main_table, resources = cls.get_resources(d3mds)
 
-            if timeseries_column:
-                main_data = main_table['data']
-                timeseries_path = timeseries['res_path']
+        dataset_root = d3mds.dataset_root
+        main_table = cls.load_table(dataset_root, main_table)
 
-                table = cls.load_timeseries(main_data, timeseries_column, timeseries_path)
-                timeseries.update(table)
+        tables = {
+            main_table['resource_id']: main_table
+        }
 
-                del main_data[timeseries_column]
+        for resource in resources:
+            resource_type = resource['resType']
+            is_collection = resource['isCollection']
 
-                tables[timeseries_res_id] = timeseries
+            if resource_type == 'table' and not is_collection:
+                table = cls.load_table(dataset_root, resource)
+            elif resource_type == 'timeseries' or is_collection:
+                table = cls.load_collection(tables, dataset_root, resource)
+            else:
+                raise ValueError("I don't know what to do with this")
+
+            tables[table['resource_id']] = table
 
         cls.remove_privileged_features(d3mds.dataset_doc, tables)
 
@@ -289,7 +340,7 @@ class TabularLoader(Loader):
     def get_relationships(tables):
         relationships = []
         table_names = {
-            table['res_id']: table['table_name']
+            table['resource_id']: table['table_name']
             for table in tables.values()
         }
 
@@ -325,7 +376,8 @@ class TabularLoader(Loader):
                             column_name,
                         ))
 
-                    elif table['main'] and res_obj == 'item':
+                    # elif table['table_name'] == 'learningData' and res_obj == 'item':
+                    elif res_obj == 'item':
                         foreign_column_name = 'd3mIndex'
                         column_name = 'd3mIndex'
 
@@ -369,20 +421,13 @@ class ResourceLoader(Loader):
     def get_context(self, X, y):
         return None
 
-    def get_resources_column(self, d3mds):
-        related_names = d3mds.get_related_resources(self.data_modality)
-
-        if len(related_names) != 1:
-            raise ValueError("Inconsistent number of related resources %s" % related_names)
-
-        return list(related_names.keys())[0]
-
     def load(self, d3mds):
         """Load X, y and context from D3MDS."""
         X, y = d3mds.get_data()
 
-        resources_name_column = self.get_resources_column(d3mds)
-        X = self.load_resources(X[resources_name_column], d3mds)
+        resource_columns = d3mds.get_related_resources(self.data_modality)
+        for resource_column in resource_columns:
+            X = self.load_resources(X, resource_column, d3mds)
 
         context = self.get_context(X, y)
 
@@ -394,13 +439,13 @@ class ImageLoader(ResourceLoader):
     INPUT_SHAPE = [224, 224, 3]
     EPOCHS = 1
 
-    def load_resources(self, X, d3mds):
+    def load_resources(self, X, resource_column, d3mds):
         LOGGER.info("Loading %s images", len(X))
 
         image_dir = d3mds.get_resources_dir('image')
         images = []
 
-        for filename in X:
+        for filename in X[resource_column]:
             if used_memory() > available_memory():
                 raise MemoryError()
 
@@ -411,23 +456,21 @@ class ImageLoader(ResourceLoader):
             image = image / 255.0  # Quantize images.
             images.append(image)
 
-        return pd.Series(np.array(images), index=X.index)
+        return np.array(images)
 
 
 class TextLoader(ResourceLoader):
 
-    EPOCHS = 5
-
-    def load_resources(self, X, d3mds):
+    def load_resources(self, X, resource_column, d3mds):
         texts_dir = d3mds.get_resources_dir('text')
         texts = []
-        for filename in X:
+        for filename in X.pop(resource_column):
             with open(os.path.join(texts_dir, filename), 'r') as text_file:
                 texts.append(text_file.read())
 
-        texts = pd.Series(texts, name='texts', index=X.index)
+        X['texts'] = texts
 
-        return pd.DataFrame(texts)
+        return X
 
 
 class GraphLoader(Loader):

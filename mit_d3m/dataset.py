@@ -270,30 +270,24 @@ class D3MDS:
         self.problem_doc = self.problem.prDoc
         self.dataset_root = self.dataset.dsHome
         self.dataset_id = self.dataset.get_datasetID()
+        self.problem_id = self.problem.get_problem_id()
         self.target_column = self.problem.get_target_column_names()[0]
+        self.targets = self.problem.get_target_column_names()
 
-    def get_data_all(self, dropTargets=False):
-        df = self.dataset.get_learning_data()
-        if dropTargets:
-            df.drop(self.target_columns, axis=1, inplace=True, errors='ignore')
+    def get_data(self):
+        X = self.dataset.get_learning_data()
 
-        return df
+        try:
+            if len(self.targets) == 1:
+                y = X[self.targets[0]]
+            else:
+                y = X[self.targets]
 
-    def get_data(self, targets=True, limit=None):
-        df = self.dataset.get_learning_data().head(limit)
+            X = X.drop(self.targets, axis=1, errors='ignore')
+        except KeyError:
+            y = pd.DataFrame(index=X.index)
 
-        y = df[self.target_column]
-        X = df.drop(self.target_column, axis=1, errors='ignore')
-
-        if targets:
-            return X, y
-
-        else:
-            return X
-
-    def get_targets(self, limit=None):
-        df = self.dataset.get_learning_data().head(limit)
-        return df[self.target_column]
+        return X, y
 
     def get_columns(self):
         return self.dataset.get_learning_data_columns()
