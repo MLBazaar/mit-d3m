@@ -270,6 +270,7 @@ class D3MDS:
         self.problem_doc = self.problem.prDoc
         self.dataset_root = self.dataset.dsHome
         self.dataset_id = self.dataset.get_datasetID()
+        self.problem_id = self.problem.get_problem_id()
         self.target_column = self.problem.get_target_column_names()[0]
         self.targets = self.problem.get_target_column_names()
 
