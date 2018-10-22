@@ -123,12 +123,12 @@ class D3MDataset:
             return first_type
 
         elif len(resource_types) == 1:
-            return 'tabular'
+            return 'single_table'
 
         else:
             second_type = resource_types[1]
             if second_type == 'table':
-                return 'tabular'
+                return 'multi_table'
 
             return second_type
 
