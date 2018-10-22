@@ -68,6 +68,24 @@ def get_problems(dataset, path):
     return problems
 
 
+STATS_COLUMNS = [
+    'dataset',
+    'data_modality',
+    'task_type',
+    'task_subtype',
+    'metric',
+    'dataset_id',
+    'problem_id',
+    'target',
+    'size',
+    'size_human',
+    'test_features',
+    'test_samples',
+    'train_features',
+    'train_samples',
+]
+
+
 def get_stats(datasets, path):
     data = []
     for dataset in datasets:
@@ -83,7 +101,7 @@ def get_stats(datasets, path):
 
             data.append(stats)
 
-    return pd.DataFrame(data)
+    return pd.DataFrame(data)[STATS_COLUMNS]
 
 
 if __name__ == '__main__':
