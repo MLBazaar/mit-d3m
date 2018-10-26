@@ -535,7 +535,8 @@ class GraphLoader(Loader):
 
 
 _LOADERS = {
-    'tabular': TabularLoader,
+    'single_table': TabularLoader,
+    'multi_table': TabularLoader,
     'timeseries': TabularLoader,
     'image': ImageLoader,
     'text': TextLoader,

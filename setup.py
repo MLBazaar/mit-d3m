@@ -10,18 +10,13 @@ with open('HISTORY.md') as history_file:
     history = history_file.read()
 
 install_requires = [
-    'baytune==0.2.1',
-    'boto==2.48.0',
-    'featuretools==0.2.0',
-    'mlblocks==0.2.3',
-    'mlprimitives==0.1.2',
+    'boto3>=1.9.27',
     'networkx==2.1',
-    'numpy==1.15.2',
-    'pandas==0.23.4',
-    'pymongo==3.7.2',
-    'requests==2.18.4',
-    'scikit-learn==0.20.0',
-    'scipy==1.1.0',
+    'numpy>=1.15.2',
+    'pandas>=0.23.4',
+    'pymongo>=3.7.2',
+    'scikit-learn>=0.20.0',
+    'scipy>=1.1.0',
 ]
 
 setup_requires = [
@@ -51,7 +46,7 @@ development_requires = [
 
     # fix style issues
     'autoflake>=1.1',
-    'autopep8>=1.3.5',
+    'autopep8==1.3.4',
 
     # distribute on PyPI
     'twine>=1.10.0',
@@ -91,6 +86,6 @@ setup(
     test_suite='tests',
     tests_require=tests_require,
     url='https://github.com/HDI-Project/mit-d3m',
-    version='0.1.0',
+    version='0.1.1-dev',
     zip_safe=False,
 )
