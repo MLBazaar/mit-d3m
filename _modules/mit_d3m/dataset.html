@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mit_d3m.dataset &mdash; mit-d3m 0.1.2-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> mit-d3m
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/mit_d3m.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/mit_d3m.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.config.html">mit_d3m.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.dataset.html">mit_d3m.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.db.html">mit_d3m.db module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.loaders.html">mit_d3m.loaders module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.metrics.html">mit_d3m.metrics module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.stats.html">mit_d3m.stats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.utils.html">mit_d3m.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing.html#release-workflow">Release Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html#id1">0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html#id2">0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mit-d3m</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../mit_d3m.html">mit_d3m</a> &raquo;</li>
+        
+      <li>mit_d3m.dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mit_d3m.dataset</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">RE_PYTHONIZE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[A-Z]&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="pythonize"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.pythonize">[docs]</a><span class="k">def</span> <span class="nf">pythonize</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">pythonized</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[A-Z]&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;_\g&lt;0&gt;&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pythonized</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+        <span class="n">pythonized</span> <span class="o">=</span> <span class="n">pythonized</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">pythonized</span></div>
+
+
+<span class="n">DATASET_SCHEMA_VERSION</span> <span class="o">=</span> <span class="s1">&#39;3.0&#39;</span>
+<span class="n">PROBLEM_SCHEMA_VERSION</span> <span class="o">=</span> <span class="s1">&#39;3.0&#39;</span>
+
+
+<div class="viewcode-block" id="D3MDataset"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset">[docs]</a><span class="k">class</span> <span class="nc">D3MDataset</span><span class="p">:</span>
+    <span class="n">dsHome</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">dsDoc</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">learningDataFile</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_get_learning_data_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the path of learningData.csv in a dataset</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;dataResources&#39;</span><span class="p">]:</span>
+            <span class="n">resPath</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resPath&#39;</span><span class="p">]</span>
+            <span class="n">resType</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resType&#39;</span><span class="p">]</span>
+
+            <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">resPath</span><span class="p">)))</span>
+
+            <span class="k">if</span> <span class="n">resType</span> <span class="o">==</span> <span class="s1">&#39;table&#39;</span> <span class="ow">and</span> <span class="n">dirname</span> <span class="o">==</span> <span class="s1">&#39;tables&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;learningData.csv&#39;</span> <span class="ow">in</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resPath&#39;</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span><span class="p">,</span> <span class="n">resPath</span><span class="p">)</span>
+
+        <span class="c1"># if the for loop is over and learningDoc is not found, then return None</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;could not find learningData file the dataset&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="c1"># handle uris</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Loading dataset: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="o">.</span><span class="n">path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span> <span class="o">=</span> <span class="n">dataset</span>
+
+        <span class="c1"># read the schema in dsHome</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span> <span class="o">=</span> <span class="n">dataset</span>
+            <span class="n">_dsDoc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span><span class="p">,</span> <span class="s1">&#39;datasetDoc.json&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+            <span class="n">_dsDoc</span> <span class="o">=</span> <span class="n">dataset</span>
+
+        <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_dsDoc</span><span class="p">),</span> <span class="n">_dsDoc</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_dsDoc</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="c1"># make sure the versions line up</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dataset_schema_version</span><span class="p">()</span> <span class="o">!=</span> <span class="n">DATASET_SCHEMA_VERSION</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;the datasetSchemaVersions in the API and datasetDoc do not match!&quot;</span><span class="p">)</span>
+
+        <span class="c1"># locate the special learningData file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learningDataFile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_learning_data_path</span><span class="p">()</span>
+
+<div class="viewcode-block" id="D3MDataset.get_datasetID"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_datasetID">[docs]</a>    <span class="k">def</span> <span class="nf">get_datasetID</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the datasetID from datasetDoc.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;about&#39;</span><span class="p">][</span><span class="s1">&#39;datasetID&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_dataset_schema_version"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_dataset_schema_version">[docs]</a>    <span class="k">def</span> <span class="nf">get_dataset_schema_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the dataset schema version that was used to create this dataset.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;about&#39;</span><span class="p">][</span><span class="s1">&#39;datasetSchemaVersion&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_learning_data"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_learning_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_learning_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the contents of learningData.doc as a DataFrame.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">learningDataFile</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;d3mIndex&#39;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_learning_data_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the path of learningData.csv in a dataset</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;dataResources&#39;</span><span class="p">]:</span>
+            <span class="n">resPath</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resPath&#39;</span><span class="p">]</span>
+            <span class="n">resType</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resType&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">resType</span> <span class="o">==</span> <span class="s1">&#39;table&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;learningData.csv&#39;</span> <span class="ow">in</span> <span class="n">resPath</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">res</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;could not find learningData.csv&#39;</span><span class="p">)</span>
+
+        <span class="c1"># if the for loop is over and learningDoc is not found, then return None</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;could not find learningData resource&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="D3MDataset.get_learning_data_columns"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_learning_data_columns">[docs]</a>    <span class="k">def</span> <span class="nf">get_learning_data_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_learning_data_resource</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_resource_types"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_resource_types">[docs]</a>    <span class="k">def</span> <span class="nf">get_resource_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dr</span><span class="p">[</span><span class="s2">&quot;resType&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">dr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;dataResources&#39;</span><span class="p">]]</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_data_modality"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_data_modality">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_modality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Detect the data modality based on the resource_types.</span>
+
+<span class="sd">        resource_types == [&#39;table&#39;] =&gt; &#39;single_table&#39;</span>
+<span class="sd">        resource_types == [&#39;something_else&#39;...] =&gt; &#39;something_else&#39;   # this is not likely</span>
+<span class="sd">        resource_types == [&#39;table&#39;, &#39;table&#39;...] =&gt; &#39;multi_table&#39;</span>
+<span class="sd">        resource_types == [&#39;table&#39;, &#39;something_else&#39;...] =&gt; &#39;something_else&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">resource_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_resource_types</span><span class="p">()</span>
+        <span class="n">first_type</span> <span class="o">=</span> <span class="n">resource_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">first_type</span> <span class="o">!=</span> <span class="s1">&#39;table&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">first_type</span>
+
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">resource_types</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;single_table&#39;</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">second_type</span> <span class="o">=</span> <span class="n">resource_types</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">second_type</span> <span class="o">==</span> <span class="s1">&#39;table&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;multi_table&#39;</span>
+
+            <span class="k">return</span> <span class="n">second_type</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_image_path"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_image_path">[docs]</a>    <span class="k">def</span> <span class="nf">get_image_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the path of the directory containing images if they exist in this dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;dataResources&#39;</span><span class="p">]:</span>
+            <span class="n">resPath</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resPath&#39;</span><span class="p">]</span>
+            <span class="n">resType</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resType&#39;</span><span class="p">]</span>
+            <span class="n">isCollection</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;isCollection&#39;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">resType</span> <span class="o">==</span> <span class="s1">&#39;image&#39;</span> <span class="ow">and</span> <span class="n">isCollection</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span><span class="p">,</span> <span class="n">resPath</span><span class="p">)</span>
+
+        <span class="c1"># if the for loop is over and no image directory is found, then return None</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;could not find learningData file the dataset&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_graph_resources"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_graph_resources">[docs]</a>    <span class="k">def</span> <span class="nf">get_graph_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;dataResources&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;resType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;graph&quot;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_graphs_as_nx"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_graphs_as_nx">[docs]</a>    <span class="k">def</span> <span class="nf">get_graphs_as_nx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">graph_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_graph_resources</span><span class="p">()</span>
+
+        <span class="n">graphs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># todo allow more than one graph resource</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">graph_res</span><span class="p">:</span>
+            <span class="n">graph_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span><span class="p">,</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;resPath&quot;</span><span class="p">])</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">graphs</span><span class="p">[</span><span class="n">g</span><span class="p">[</span><span class="s1">&#39;resID&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">graph_path</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">exception</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">:</span>
+                <span class="n">graphs</span><span class="p">[</span><span class="n">g</span><span class="p">[</span><span class="s1">&#39;resID&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">graph_path</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">graphs</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_resources_by_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the list of resources that are of the indicated type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">resources</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;dataResources&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">resource_type</span><span class="p">:</span>
+                <span class="n">resources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">resources</span>
+
+<div class="viewcode-block" id="D3MDataset.get_related_resource_names"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_related_resource_names">[docs]</a>    <span class="k">def</span> <span class="nf">get_related_resource_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_type</span><span class="p">):</span>
+        <span class="n">related_names</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">related_resources</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_resources_by_type</span><span class="p">(</span><span class="n">resource_type</span><span class="p">)</span>
+        <span class="n">related_resources</span> <span class="o">=</span> <span class="p">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;resID&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">related_resources</span><span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_learning_data_columns</span><span class="p">():</span>
+            <span class="n">refers_to</span> <span class="o">=</span> <span class="n">column</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refersTo&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">refers_to</span><span class="p">:</span>
+                <span class="n">res_id</span> <span class="o">=</span> <span class="n">refers_to</span><span class="p">[</span><span class="s1">&#39;resID&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">res_id</span> <span class="ow">in</span> <span class="n">related_resources</span><span class="p">:</span>
+                    <span class="n">related_names</span><span class="p">[</span><span class="n">column</span><span class="p">[</span><span class="s1">&#39;colName&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">res_id</span>
+
+        <span class="k">return</span> <span class="n">related_names</span></div>
+
+<div class="viewcode-block" id="D3MDataset.get_text_path"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDataset.get_text_path">[docs]</a>    <span class="k">def</span> <span class="nf">get_text_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the path of the directory containing text if they exist in this dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span><span class="p">[</span><span class="s1">&#39;dataResources&#39;</span><span class="p">]:</span>
+            <span class="n">resPath</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resPath&#39;</span><span class="p">]</span>
+            <span class="n">resType</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;resType&#39;</span><span class="p">]</span>
+            <span class="n">isCollection</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;isCollection&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">resType</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span> <span class="ow">and</span> <span class="n">isCollection</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span><span class="p">,</span> <span class="n">resPath</span><span class="p">)</span>
+
+        <span class="c1"># if the for loop is over and no image directory is found, then return None</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;could not find learningData file the dataset&#39;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="D3MProblem"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MProblem">[docs]</a><span class="k">class</span> <span class="nc">D3MProblem</span><span class="p">:</span>
+    <span class="n">prHome</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">prDoc</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">splitsFile</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span> <span class="o">=</span> <span class="n">problem</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prHome</span> <span class="o">=</span> <span class="n">problem</span>
+
+            <span class="c1"># read the schema in prHome</span>
+            <span class="n">_prDoc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prHome</span><span class="p">,</span> <span class="s1">&#39;problemDoc.json&#39;</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_prDoc</span><span class="p">),</span> <span class="n">_prDoc</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_prDoc</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="c1"># make sure the versions line up</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_problem_schema_version</span><span class="p">()</span> <span class="o">!=</span> <span class="n">PROBLEM_SCHEMA_VERSION</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;the problemSchemaVersions in the API and datasetDoc do not match!&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="D3MProblem.get_task_type"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MProblem.get_task_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span><span class="p">[</span><span class="s2">&quot;about&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;taskType&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="D3MProblem.get_task_subtype"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MProblem.get_task_subtype">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_subtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span><span class="p">[</span><span class="s2">&quot;about&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;taskSubType&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="D3MProblem.get_problem_id"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MProblem.get_problem_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_problem_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the problemID from problemDoc.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span><span class="p">[</span><span class="s1">&#39;about&#39;</span><span class="p">][</span><span class="s1">&#39;problemID&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="D3MProblem.get_problem_schema_version"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MProblem.get_problem_schema_version">[docs]</a>    <span class="k">def</span> <span class="nf">get_problem_schema_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the problem schema version that was used to create this dataset.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span><span class="p">[</span><span class="s1">&#39;about&#39;</span><span class="p">][</span><span class="s1">&#39;problemSchemaVersion&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="D3MProblem.get_performance_metrics"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MProblem.get_performance_metrics">[docs]</a>    <span class="k">def</span> <span class="nf">get_performance_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">][</span><span class="s1">&#39;performanceMetrics&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="D3MProblem.get_target_column_names"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MProblem.get_target_column_names">[docs]</a>    <span class="k">def</span> <span class="nf">get_target_column_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;targets&#39;</span><span class="p">]</span>
+        <span class="n">target_columns</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="n">target_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="s1">&#39;colName&#39;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">target_columns</span></div></div>
+
+
+<div class="viewcode-block" id="D3MDS"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS">[docs]</a><span class="k">class</span> <span class="nc">D3MDS</span><span class="p">:</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">problem</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">problem</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">D3MDataset</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">D3MDataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">D3MProblem</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">problem</span> <span class="o">=</span> <span class="n">D3MProblem</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">dsDoc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">problem_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">prDoc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">dsHome</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_datasetID</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">problem_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_problem_id</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_target_column_names</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_target_column_names</span><span class="p">()</span>
+
+<div class="viewcode-block" id="D3MDS.get_data"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_learning_data</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">]</span>
+
+            <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_columns"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_columns">[docs]</a>    <span class="k">def</span> <span class="nf">get_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_learning_data_columns</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_resources_dir"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_resources_dir">[docs]</a>    <span class="k">def</span> <span class="nf">get_resources_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_modality</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">data_modality</span> <span class="o">==</span> <span class="s1">&#39;image&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_image_path</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">data_modality</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_text_path</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_related_resources"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_related_resources">[docs]</a>    <span class="k">def</span> <span class="nf">get_related_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_modality</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_related_resource_names</span><span class="p">(</span><span class="n">data_modality</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="D3MDS.load_graphs"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.load_graphs">[docs]</a>    <span class="k">def</span> <span class="nf">load_graphs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_graphs_as_nx</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_data_modality"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_data_modality">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_modality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_data_modality</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_problem_id"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_problem_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_problem_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_problem_id</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_task_type"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_task_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pythonize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_task_type</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_task_subtype"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_task_subtype">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_subtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pythonize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_task_subtype</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="D3MDS.get_metric"><a class="viewcode-back" href="../../api/mit_d3m.dataset.html#mit_d3m.dataset.D3MDS.get_metric">[docs]</a>    <span class="k">def</span> <span class="nf">get_metric</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_performance_metrics</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;metric&#39;</span><span class="p">]</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, MIT Data To AI Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

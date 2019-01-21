@@ -1,0 +1,7 @@
+mit\_d3m.stats module
+=====================
+
+.. automodule:: mit_d3m.stats
+    :members:
+    :undoc-members:
+    :show-inheritance:

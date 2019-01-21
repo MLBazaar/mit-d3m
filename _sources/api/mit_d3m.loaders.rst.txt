@@ -1,0 +1,7 @@
+mit\_d3m.loaders module
+=======================
+
+.. automodule:: mit_d3m.loaders
+    :members:
+    :undoc-members:
+    :show-inheritance:

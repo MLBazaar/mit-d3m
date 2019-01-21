@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mit_d3m.dataset module &mdash; mit-d3m 0.1.2-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mit_d3m.db module" href="mit_d3m.db.html" />
+    <link rel="prev" title="mit_d3m.config module" href="mit_d3m.config.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> mit-d3m
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mit_d3m.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mit_d3m.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.config.html">mit_d3m.config module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mit_d3m.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.db.html">mit_d3m.db module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.loaders.html">mit_d3m.loaders module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.metrics.html">mit_d3m.metrics module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.stats.html">mit_d3m.stats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.utils.html">mit_d3m.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#id1">0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#id2">0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mit-d3m</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mit_d3m.html">mit_d3m package</a> &raquo;</li>
+        
+      <li>mit_d3m.dataset module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/HDI-Project/mit-d3m/blob/master/docs/api/mit_d3m.dataset.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-mit_d3m.dataset">
+<span id="mit-d3m-dataset-module"></span><h1>mit_d3m.dataset module<a class="headerlink" href="#module-mit_d3m.dataset" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="mit_d3m.dataset.D3MDS">
+<em class="property">class </em><code class="descclassname">mit_d3m.dataset.</code><code class="descname">D3MDS</code><span class="sig-paren">(</span><em>dataset</em>, <em>problem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MDS.dataset">
+<code class="descname">dataset</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MDS.dataset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_columns">
+<code class="descname">get_columns</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_data_modality">
+<code class="descname">get_data_modality</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_data_modality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_data_modality" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_metric">
+<code class="descname">get_metric</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_problem_id">
+<code class="descname">get_problem_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_problem_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_problem_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_related_resources">
+<code class="descname">get_related_resources</code><span class="sig-paren">(</span><em>data_modality</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_related_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_related_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_resources_dir">
+<code class="descname">get_resources_dir</code><span class="sig-paren">(</span><em>data_modality</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_resources_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_resources_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_task_subtype">
+<code class="descname">get_task_subtype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_task_subtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_task_subtype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.get_task_type">
+<code class="descname">get_task_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.get_task_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.get_task_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDS.load_graphs">
+<code class="descname">load_graphs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS.load_graphs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS.load_graphs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MDS.problem">
+<code class="descname">problem</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MDS.problem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.dataset.D3MDataset">
+<em class="property">class </em><code class="descclassname">mit_d3m.dataset.</code><code class="descname">D3MDataset</code><span class="sig-paren">(</span><em>dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MDataset.dsDoc">
+<code class="descname">dsDoc</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.dsDoc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MDataset.dsHome">
+<code class="descname">dsHome</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.dsHome" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_data_modality">
+<code class="descname">get_data_modality</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_data_modality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_data_modality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect the data modality based on the resource_types.</p>
+<p>resource_types == [‘table’] =&gt; ‘single_table’
+resource_types == [‘something_else’…] =&gt; ‘something_else’   # this is not likely
+resource_types == [‘table’, ‘table’…] =&gt; ‘multi_table’
+resource_types == [‘table’, ‘something_else’…] =&gt; ‘something_else’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_datasetID">
+<code class="descname">get_datasetID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_datasetID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_datasetID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the datasetID from datasetDoc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_dataset_schema_version">
+<code class="descname">get_dataset_schema_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_dataset_schema_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_dataset_schema_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the dataset schema version that was used to create this dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_graph_resources">
+<code class="descname">get_graph_resources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_graph_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_graph_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_graphs_as_nx">
+<code class="descname">get_graphs_as_nx</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_graphs_as_nx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_graphs_as_nx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_image_path">
+<code class="descname">get_image_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_image_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_image_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the path of the directory containing images if they exist in this dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_learning_data">
+<code class="descname">get_learning_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_learning_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_learning_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the contents of learningData.doc as a DataFrame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_learning_data_columns">
+<code class="descname">get_learning_data_columns</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_learning_data_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_learning_data_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_related_resource_names">
+<code class="descname">get_related_resource_names</code><span class="sig-paren">(</span><em>resource_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_related_resource_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_related_resource_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_resource_types">
+<code class="descname">get_resource_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_resource_types"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_resource_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MDataset.get_text_path">
+<code class="descname">get_text_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset.get_text_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.get_text_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the path of the directory containing text if they exist in this dataset.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MDataset.learningDataFile">
+<code class="descname">learningDataFile</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.learningDataFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.dataset.D3MProblem">
+<em class="property">class </em><code class="descclassname">mit_d3m.dataset.</code><code class="descname">D3MProblem</code><span class="sig-paren">(</span><em>problem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MProblem.get_performance_metrics">
+<code class="descname">get_performance_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem.get_performance_metrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.get_performance_metrics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MProblem.get_problem_id">
+<code class="descname">get_problem_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem.get_problem_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.get_problem_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the problemID from problemDoc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MProblem.get_problem_schema_version">
+<code class="descname">get_problem_schema_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem.get_problem_schema_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.get_problem_schema_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the problem schema version that was used to create this dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MProblem.get_target_column_names">
+<code class="descname">get_target_column_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem.get_target_column_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.get_target_column_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MProblem.get_task_subtype">
+<code class="descname">get_task_subtype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem.get_task_subtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.get_task_subtype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.dataset.D3MProblem.get_task_type">
+<code class="descname">get_task_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem.get_task_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.get_task_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MProblem.prDoc">
+<code class="descname">prDoc</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.prDoc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MProblem.prHome">
+<code class="descname">prHome</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.prHome" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mit_d3m.dataset.D3MProblem.splitsFile">
+<code class="descname">splitsFile</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.splitsFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mit_d3m.dataset.pythonize">
+<code class="descclassname">mit_d3m.dataset.</code><code class="descname">pythonize</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#pythonize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.pythonize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mit_d3m.db.html" class="btn btn-neutral float-right" title="mit_d3m.db module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mit_d3m.config.html" class="btn btn-neutral" title="mit_d3m.config module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, MIT Data To AI Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

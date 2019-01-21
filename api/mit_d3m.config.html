@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mit_d3m.config module &mdash; mit-d3m 0.1.2-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mit_d3m.dataset module" href="mit_d3m.dataset.html" />
+    <link rel="prev" title="mit_d3m package" href="mit_d3m.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> mit-d3m
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mit_d3m.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mit_d3m.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mit_d3m.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.dataset.html">mit_d3m.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.db.html">mit_d3m.db module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.loaders.html">mit_d3m.loaders module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.metrics.html">mit_d3m.metrics module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.stats.html">mit_d3m.stats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.utils.html">mit_d3m.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#id1">0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#id2">0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mit-d3m</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mit_d3m.html">mit_d3m package</a> &raquo;</li>
+        
+      <li>mit_d3m.config module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/HDI-Project/mit-d3m/blob/master/docs/api/mit_d3m.config.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-mit_d3m.config">
+<span id="mit-d3m-config-module"></span><h1>mit_d3m.config module<a class="headerlink" href="#module-mit_d3m.config" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="mit_d3m.config.build_config">
+<code class="descclassname">mit_d3m.config.</code><code class="descname">build_config</code><span class="sig-paren">(</span><em>dataset</em>, <em>datasets_dir</em>, <em>phase</em>, <em>problem=None</em>, <em>output_dir='data/output'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/config.html#build_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.config.build_config" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="mailto:root&#37;&#52;&#48;d3m-example-pod">root<span>&#64;</span>d3m-example-pod</a>:/# cat /input/185_baseball/test_config.json
+{</p>
+<blockquote>
+<div>“problem_schema”: “/input/TEST/problem_TEST/problemDoc.json”,
+“problem_root”: “/input/TEST/problem_TEST”,
+“dataset_schema”: “/input/TEST/dataset_TEST/datasetDoc.json”,
+“test_data_root”: “/input/TEST/dataset_TEST”,
+“results_root”: “/output/predictions”,
+“executables_root”: “/output/executables”,
+“temp_storage_root”: “/output/supporting_files”</div></blockquote>
+<p>}
+<a class="reference external" href="mailto:root&#37;&#52;&#48;d3m-example-pod">root<span>&#64;</span>d3m-example-pod</a>:/# cat /input/185_baseball/search_config.json
+{</p>
+<blockquote>
+<div>“problem_schema”: “/input/TRAIN/problem_TRAIN/problemDoc.json”,
+“problem_root”: “/input/TRAIN/problem_TRAIN”,
+“dataset_schema”: “/input/TRAIN/dataset_TRAIN/datasetDoc.json”,
+“training_data_root”: “/input/TRAIN/dataset_TRAIN”,
+“pipeline_logs_root”: “/output/pipelines”,
+“executables_root”: “/output/executables”,
+“user_problems_root”: “/output/user_problems”,
+“temp_storage_root”: “/output/supporting_files”</div></blockquote>
+<p>}</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mit_d3m.dataset.html" class="btn btn-neutral float-right" title="mit_d3m.dataset module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mit_d3m.html" class="btn btn-neutral" title="mit_d3m package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, MIT Data To AI Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

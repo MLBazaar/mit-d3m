@@ -1,0 +1,21 @@
+mit\_d3m package
+================
+
+.. automodule:: mit_d3m
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   mit_d3m.config
+   mit_d3m.dataset
+   mit_d3m.db
+   mit_d3m.loaders
+   mit_d3m.metrics
+   mit_d3m.stats
+   mit_d3m.utils
+

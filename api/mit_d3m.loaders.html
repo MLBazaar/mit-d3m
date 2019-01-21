@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mit_d3m.loaders module &mdash; mit-d3m 0.1.2-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mit_d3m.metrics module" href="mit_d3m.metrics.html" />
+    <link rel="prev" title="mit_d3m.db module" href="mit_d3m.db.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> mit-d3m
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mit_d3m.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mit_d3m.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.config.html">mit_d3m.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.dataset.html">mit_d3m.dataset module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.db.html">mit_d3m.db module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mit_d3m.loaders module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.metrics.html">mit_d3m.metrics module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.stats.html">mit_d3m.stats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mit_d3m.utils.html">mit_d3m.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#development-lead">Development Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#id1">0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#id2">0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mit-d3m</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mit_d3m.html">mit_d3m package</a> &raquo;</li>
+        
+      <li>mit_d3m.loaders module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/HDI-Project/mit-d3m/blob/master/docs/api/mit_d3m.loaders.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-mit_d3m.loaders">
+<span id="mit-d3m-loaders-module"></span><h1>mit_d3m.loaders module<a class="headerlink" href="#module-mit_d3m.loaders" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="mit_d3m.loaders.Dataset">
+<em class="property">class </em><code class="descclassname">mit_d3m.loaders.</code><code class="descname">Dataset</code><span class="sig-paren">(</span><em>name</em>, <em>X=None</em>, <em>y=None</em>, <em>context=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mit_d3m.loaders.Dataset.get_split">
+<code class="descname">get_split</code><span class="sig-paren">(</span><em>indexes</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Dataset.get_split"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Dataset.get_split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.loaders.GraphLoader">
+<em class="property">class </em><code class="descclassname">mit_d3m.loaders.</code><code class="descname">GraphLoader</code><span class="sig-paren">(</span><em>data_modality</em>, <em>task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#GraphLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.GraphLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.Loader" title="mit_d3m.loaders.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.Loader</span></code></a></p>
+<dl class="method">
+<dt id="mit_d3m.loaders.GraphLoader.get_context">
+<code class="descname">get_context</code><span class="sig-paren">(</span><em>X</em>, <em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#GraphLoader.get_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.GraphLoader.get_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.loaders.GraphLoader.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#GraphLoader.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.GraphLoader.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load X, y and context from D3MDS.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.loaders.GraphLoader.load_graphs">
+<code class="descname">load_graphs</code><span class="sig-paren">(</span><em>d3mds</em>, <em>max_graphs=2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#GraphLoader.load_graphs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.GraphLoader.load_graphs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.loaders.ImageLoader">
+<em class="property">class </em><code class="descclassname">mit_d3m.loaders.</code><code class="descname">ImageLoader</code><span class="sig-paren">(</span><em>data_modality</em>, <em>task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ImageLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ImageLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.ResourceLoader" title="mit_d3m.loaders.ResourceLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.ResourceLoader</span></code></a></p>
+<dl class="attribute">
+<dt id="mit_d3m.loaders.ImageLoader.EPOCHS">
+<code class="descname">EPOCHS</code><em class="property"> = 1</em><a class="headerlink" href="#mit_d3m.loaders.ImageLoader.EPOCHS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mit_d3m.loaders.ImageLoader.INPUT_SHAPE">
+<code class="descname">INPUT_SHAPE</code><em class="property"> = [224, 224, 3]</em><a class="headerlink" href="#mit_d3m.loaders.ImageLoader.INPUT_SHAPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.loaders.ImageLoader.load_resources">
+<code class="descname">load_resources</code><span class="sig-paren">(</span><em>X</em>, <em>resource_column</em>, <em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ImageLoader.load_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ImageLoader.load_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.loaders.Loader">
+<em class="property">class </em><code class="descclassname">mit_d3m.loaders.</code><code class="descname">Loader</code><span class="sig-paren">(</span><em>data_modality</em>, <em>task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Loader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="mit_d3m.loaders.Loader.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Loader.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Loader.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load X, y and context from D3MDS.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.loaders.Loader.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Loader.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Loader.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.loaders.ResourceLoader">
+<em class="property">class </em><code class="descclassname">mit_d3m.loaders.</code><code class="descname">ResourceLoader</code><span class="sig-paren">(</span><em>data_modality</em>, <em>task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ResourceLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ResourceLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.Loader" title="mit_d3m.loaders.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.Loader</span></code></a></p>
+<dl class="method">
+<dt id="mit_d3m.loaders.ResourceLoader.get_context">
+<code class="descname">get_context</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ResourceLoader.get_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ResourceLoader.get_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.loaders.ResourceLoader.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ResourceLoader.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ResourceLoader.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load X, y and context from D3MDS.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.loaders.ResourceLoader.load_resources">
+<code class="descname">load_resources</code><span class="sig-paren">(</span><em>resources_names</em>, <em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ResourceLoader.load_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ResourceLoader.load_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.loaders.TabularLoader">
+<em class="property">class </em><code class="descclassname">mit_d3m.loaders.</code><code class="descname">TabularLoader</code><span class="sig-paren">(</span><em>data_modality</em>, <em>task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.Loader" title="mit_d3m.loaders.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.Loader</span></code></a></p>
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.analyze_columns">
+<em class="property">classmethod </em><code class="descname">analyze_columns</code><span class="sig-paren">(</span><em>columns_list</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.analyze_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.analyze_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.build_columns">
+<em class="property">classmethod </em><code class="descname">build_columns</code><span class="sig-paren">(</span><em>data</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.build_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.build_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mit_d3m.loaders.TabularLoader.find_privileged_features">
+<em class="property">static </em><code class="descname">find_privileged_features</code><span class="sig-paren">(</span><em>dataset_doc</em>, <em>tables</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.find_privileged_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.find_privileged_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mit_d3m.loaders.TabularLoader.get_collection_details">
+<em class="property">static </em><code class="descname">get_collection_details</code><span class="sig-paren">(</span><em>dataset_root</em>, <em>resource</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.get_collection_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.get_collection_details" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.get_columns">
+<em class="property">classmethod </em><code class="descname">get_columns</code><span class="sig-paren">(</span><em>resource</em>, <em>data</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.get_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.get_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mit_d3m.loaders.TabularLoader.get_parent">
+<em class="property">static </em><code class="descname">get_parent</code><span class="sig-paren">(</span><em>resource_id</em>, <em>tables</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.get_parent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.get_parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mit_d3m.loaders.TabularLoader.get_relationships">
+<em class="property">static </em><code class="descname">get_relationships</code><span class="sig-paren">(</span><em>tables</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.get_relationships"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.get_relationships" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mit_d3m.loaders.TabularLoader.get_resources">
+<em class="property">static </em><code class="descname">get_resources</code><span class="sig-paren">(</span><em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.get_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.get_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mit_d3m.loaders.TabularLoader.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load X, y and context from D3MDS.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.load_collection">
+<em class="property">classmethod </em><code class="descname">load_collection</code><span class="sig-paren">(</span><em>tables</em>, <em>dataset_root</em>, <em>resource</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.load_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.load_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.load_collection_data">
+<em class="property">classmethod </em><code class="descname">load_collection_data</code><span class="sig-paren">(</span><em>path</em>, <em>parent_table</em>, <em>parent_column</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.load_collection_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.load_collection_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.load_table">
+<em class="property">classmethod </em><code class="descname">load_table</code><span class="sig-paren">(</span><em>dataset_root</em>, <em>resource</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.load_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.load_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.load_tables">
+<em class="property">classmethod </em><code class="descname">load_tables</code><span class="sig-paren">(</span><em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.load_tables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.load_tables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mit_d3m.loaders.TabularLoader.make_index">
+<em class="property">static </em><code class="descname">make_index</code><span class="sig-paren">(</span><em>data</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.make_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.make_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mit_d3m.loaders.TabularLoader.map_dtype_to_d3m_type">
+<em class="property">static </em><code class="descname">map_dtype_to_d3m_type</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.map_dtype_to_d3m_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.map_dtype_to_d3m_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mit_d3m.loaders.TabularLoader.remove_privileged_features">
+<em class="property">classmethod </em><code class="descname">remove_privileged_features</code><span class="sig-paren">(</span><em>dataset_doc</em>, <em>tables</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.remove_privileged_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.remove_privileged_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mit_d3m.loaders.TextLoader">
+<em class="property">class </em><code class="descclassname">mit_d3m.loaders.</code><code class="descname">TextLoader</code><span class="sig-paren">(</span><em>data_modality</em>, <em>task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TextLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TextLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.ResourceLoader" title="mit_d3m.loaders.ResourceLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.ResourceLoader</span></code></a></p>
+<dl class="method">
+<dt id="mit_d3m.loaders.TextLoader.load_resources">
+<code class="descname">load_resources</code><span class="sig-paren">(</span><em>X</em>, <em>resource_column</em>, <em>d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TextLoader.load_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TextLoader.load_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mit_d3m.loaders.features_by_type">
+<code class="descclassname">mit_d3m.loaders.</code><code class="descname">features_by_type</code><span class="sig-paren">(</span><em>column_types</em>, <em>columns</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#features_by_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.features_by_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mit_d3m.loaders.get_loader">
+<code class="descclassname">mit_d3m.loaders.</code><code class="descname">get_loader</code><span class="sig-paren">(</span><em>data_modality</em>, <em>task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#get_loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.get_loader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mit_d3m.metrics.html" class="btn btn-neutral float-right" title="mit_d3m.metrics module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mit_d3m.db.html" class="btn btn-neutral" title="mit_d3m.db module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, MIT Data To AI Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

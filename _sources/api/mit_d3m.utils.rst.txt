@@ -1,0 +1,7 @@
+mit\_d3m.utils module
+=====================
+
+.. automodule:: mit_d3m.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
