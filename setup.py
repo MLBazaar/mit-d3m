@@ -15,9 +15,11 @@ install_requires = [
     'networkx==2.1',
     'numpy>=1.15.2',
     'pandas>=0.23.4',
+    'psutil>=5.4.8',
     'pymongo>=3.7.2',
     'scikit-learn>=0.20.0',
     'scipy>=1.1.0',
+    'tensorflow>=1.11.0',
 ]
 
 setup_requires = [
