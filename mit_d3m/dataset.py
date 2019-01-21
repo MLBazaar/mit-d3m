@@ -16,7 +16,7 @@ RE_PYTHONIZE = re.compile(r'[A-Z]')
 
 
 def pythonize(name):
-    pythonized = re.sub('[A-Z]', '_\g<0>', name).lower()
+    pythonized = re.sub('[A-Z]', r'_\g<0>', name).lower()
     if pythonized.startswith('_'):
         pythonized = pythonized[1:]
 

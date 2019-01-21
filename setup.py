@@ -11,12 +11,15 @@ with open('HISTORY.md') as history_file:
 
 install_requires = [
     'boto3>=1.9.27',
+    'keras>=2.2.4',
     'networkx==2.1',
     'numpy>=1.15.2',
     'pandas>=0.23.4',
+    'psutil>=5.4.8',
     'pymongo>=3.7.2',
     'scikit-learn>=0.20.0',
     'scipy>=1.1.0',
+    'tensorflow>=1.11.0',
 ]
 
 setup_requires = [
@@ -63,10 +66,8 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
     ],
     description="MIT tools to work with D3M datasets.",
     extras_require={
@@ -81,7 +82,7 @@ setup(
     long_description_content_type='text/markdown',
     name='mit-d3m',
     packages=find_packages(include=['mit_d3m', 'mit_d3m.*']),
-    python_requires='>=3.4',
+    python_requires='>=3.5, <3.7',
     setup_requires=setup_requires,
     test_suite='tests',
     tests_require=tests_require,
