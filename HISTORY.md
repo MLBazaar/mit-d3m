@@ -1,5 +1,9 @@
 # History
 
+## 0.1.2
+
+* Set the d3mIndex column as a DataFrame column in the TabularLoader
+
 ## 0.1.1
 
 * Removal of unnecessary dependencies
