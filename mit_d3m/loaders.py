@@ -65,6 +65,7 @@ class Loader(object):
             'task_type': self.task_type,
         }
 
+
 def features_by_type(column_types, columns):
     if not isinstance(column_types, list):
         column_types = [column_types]
@@ -290,8 +291,6 @@ class TabularLoader(Loader):
             'time_index': time_index
         }
 
-        return table
-
     @staticmethod
     def get_resources(d3mds):
         main_table = None
@@ -409,6 +408,9 @@ class TabularLoader(Loader):
             'entities': entities,
             'relationships': relationships
         }
+
+        X.reset_index(inplace=True, drop=False)
+        X.set_index('d3mIndex', inplace=True, drop=False)
 
         return Dataset(d3mds.dataset_id, X, y, context)
 
