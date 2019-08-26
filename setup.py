@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
@@ -20,6 +20,7 @@ install_requires = [
     'scikit-learn>=0.20.0',
     'scipy>=1.1.0',
     'tensorflow>=1.11.0',
+    'pillow>=6.1.0',
 ]
 
 setup_requires = [
@@ -27,21 +28,21 @@ setup_requires = [
 ]
 
 tests_require = [
-    'coverage>=4.5.1',
     'pytest>=3.4.2',
-    'tox>=2.9.1',
+    'pytest-cov>=2.6.0',
 ]
 
 development_requires = [
     # general
     'bumpversion>=0.5.3',
-    'pip>=9.0.1',
+    'pip>=10.0.0',
     'watchdog>=0.8.3',
 
     # docs
     'm2r>=0.2.0',
     'Sphinx>=1.7.1',
     'sphinx_rtd_theme>=0.2.4',
+    'autodocsumm>=0.1.10',
 
     # style check
     'flake8>=3.5.0',
@@ -49,25 +50,31 @@ development_requires = [
 
     # fix style issues
     'autoflake>=1.1',
-    'autopep8==1.3.4',
+    'autopep8>=1.3.5',
 
     # distribute on PyPI
     'twine>=1.10.0',
     'wheel>=0.30.0',
+
+    # Advanced testing
+    'tox>=2.9.1',
+    'coverage>=4.5.1',
 ]
 
 
 setup(
-    author="MIT Data To AI Lab",
+    author='MIT Data To AI Lab',
     author_email='dailabmit@gmail.com',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Topic :: Scientific/Engineering :: Artificial Intelligence',
     ],
     description="MIT tools to work with D3M datasets.",
     extras_require={
@@ -77,16 +84,16 @@ setup(
     include_package_data=True,
     install_requires=install_requires,
     keywords='mit-d3m',
-    license="MIT license",
+    license='MIT license',
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/markdown',
     name='mit-d3m',
     packages=find_packages(include=['mit_d3m', 'mit_d3m.*']),
-    python_requires='>=3.5, <3.7',
+    python_requires='>=3.5',
     setup_requires=setup_requires,
     test_suite='tests',
     tests_require=tests_require,
     url='https://github.com/HDI-Project/mit-d3m',
-    version='0.1.3-dev',
+    version='0.2.0-dev',
     zip_safe=False,
 )
