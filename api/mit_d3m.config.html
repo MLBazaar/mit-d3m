@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="mit_d3m.dataset module" href="mit_d3m.dataset.html" />
     <link rel="prev" title="mit_d3m package" href="mit_d3m.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -197,29 +199,31 @@
 <span id="mit-d3m-config-module"></span><h1>mit_d3m.config module<a class="headerlink" href="#module-mit_d3m.config" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="mit_d3m.config.build_config">
-<code class="descclassname">mit_d3m.config.</code><code class="descname">build_config</code><span class="sig-paren">(</span><em>dataset</em>, <em>datasets_dir</em>, <em>phase</em>, <em>problem=None</em>, <em>output_dir='data/output'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/config.html#build_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.config.build_config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">mit_d3m.config.</code><code class="sig-name descname">build_config</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">datasets_dir</em>, <em class="sig-param">phase</em>, <em class="sig-param">problem=None</em>, <em class="sig-param">output_dir='data/output'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/config.html#build_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.config.build_config" title="Permalink to this definition">¶</a></dt>
 <dd><p><a class="reference external" href="mailto:root&#37;&#52;&#48;d3m-example-pod">root<span>&#64;</span>d3m-example-pod</a>:/# cat /input/185_baseball/test_config.json
 {</p>
 <blockquote>
-<div>“problem_schema”: “/input/TEST/problem_TEST/problemDoc.json”,
+<div><p>“problem_schema”: “/input/TEST/problem_TEST/problemDoc.json”,
 “problem_root”: “/input/TEST/problem_TEST”,
 “dataset_schema”: “/input/TEST/dataset_TEST/datasetDoc.json”,
 “test_data_root”: “/input/TEST/dataset_TEST”,
 “results_root”: “/output/predictions”,
 “executables_root”: “/output/executables”,
-“temp_storage_root”: “/output/supporting_files”</div></blockquote>
+“temp_storage_root”: “/output/supporting_files”</p>
+</div></blockquote>
 <p>}
 <a class="reference external" href="mailto:root&#37;&#52;&#48;d3m-example-pod">root<span>&#64;</span>d3m-example-pod</a>:/# cat /input/185_baseball/search_config.json
 {</p>
 <blockquote>
-<div>“problem_schema”: “/input/TRAIN/problem_TRAIN/problemDoc.json”,
+<div><p>“problem_schema”: “/input/TRAIN/problem_TRAIN/problemDoc.json”,
 “problem_root”: “/input/TRAIN/problem_TRAIN”,
 “dataset_schema”: “/input/TRAIN/dataset_TRAIN/datasetDoc.json”,
 “training_data_root”: “/input/TRAIN/dataset_TRAIN”,
 “pipeline_logs_root”: “/output/pipelines”,
 “executables_root”: “/output/executables”,
 “user_problems_root”: “/output/user_problems”,
-“temp_storage_root”: “/output/supporting_files”</div></blockquote>
+“temp_storage_root”: “/output/supporting_files”</p>
+</div></blockquote>
 <p>}</p>
 </dd></dl>
 
@@ -236,7 +240,7 @@
         <a href="mit_d3m.dataset.html" class="btn btn-neutral float-right" title="mit_d3m.dataset module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mit_d3m.html" class="btn btn-neutral" title="mit_d3m package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mit_d3m.html" class="btn btn-neutral float-left" title="mit_d3m package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -262,26 +266,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

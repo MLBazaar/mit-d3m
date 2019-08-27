@@ -2,9 +2,9 @@ mit\_d3m package
 ================
 
 .. automodule:: mit_d3m
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -18,4 +18,3 @@ Submodules
    mit_d3m.metrics
    mit_d3m.stats
    mit_d3m.utils
-

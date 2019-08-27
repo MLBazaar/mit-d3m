@@ -2,6 +2,6 @@ mit\_d3m.dataset module
 =======================
 
 .. automodule:: mit_d3m.dataset
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
