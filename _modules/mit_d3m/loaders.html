@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mit_d3m.loaders &mdash; mit-d3m 0.1.3-dev documentation</title>
+  <title>mit_d3m.loaders &mdash; mit-d3m 0.2.0-dev documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="../../_static/dai-logo-white.ico"/>
   
   
   
@@ -52,6 +54,9 @@
           
 
           
+            
+            <img src="../../_static/dai-logo-white-200.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
@@ -75,12 +80,18 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">mit-d3m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html#install">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../readme.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readme.html#install-with-pip">Install with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../readme.html#install-from-source">Install from source</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/mit_d3m.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../api/mit_d3m.html#submodules">Submodules</a><ul>
@@ -93,11 +104,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../../api/mit_d3m.utils.html">mit_d3m.utils module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/mit_d3m.html#module-mit_d3m">Module contents</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Development Notes</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../contributing.html#report-bugs">Report Bugs</a></li>
@@ -112,11 +121,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing.html#tips">Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../contributing.html#release-workflow">Release Workflow</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../authors.html#development-lead">Development Lead</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authors.html#contributors">Contributors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a><ul>
@@ -325,21 +329,18 @@
             <span class="k">return</span> <span class="s1">&#39;categorical&#39;</span></div>
 
 <div class="viewcode-block" id="TabularLoader.analyze_columns"><a class="viewcode-back" href="../../api/mit_d3m.loaders.html#mit_d3m.loaders.TabularLoader.analyze_columns">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">analyze_columns</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">columns_list</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="n">columns</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">analyze_columns</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">index</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">time_index</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
             <span class="n">column_name</span> <span class="o">=</span> <span class="n">column</span><span class="p">[</span><span class="s1">&#39;colName&#39;</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="s1">&#39;suggestedTarget&#39;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">[</span><span class="s1">&#39;role&#39;</span><span class="p">]:</span>
                 <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column_name</span><span class="p">)</span>
 
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">columns</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">column</span>
-
                 <span class="k">if</span> <span class="s1">&#39;index&#39;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">[</span><span class="s1">&#39;role&#39;</span><span class="p">]:</span>
                     <span class="k">if</span> <span class="n">index</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Multiple indexes found&quot;</span><span class="p">)</span>
@@ -364,14 +365,14 @@
     <span class="k">def</span> <span class="nf">build_columns</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="n">index</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">make_index</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
-        <span class="n">columns</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">column_name</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
                 <span class="s1">&#39;colIndex&#39;</span><span class="p">:</span> <span class="n">column_index</span><span class="p">,</span>
                 <span class="s1">&#39;colName&#39;</span><span class="p">:</span> <span class="n">column_name</span><span class="p">,</span>
                 <span class="s1">&#39;colType&#39;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">map_dtype_to_d3m_type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
             <span class="p">}</span>
             <span class="k">for</span> <span class="n">column_index</span><span class="p">,</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="p">}</span>
+        <span class="p">]</span>
 
         <span class="n">time_index</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
@@ -417,10 +418,10 @@
 <div class="viewcode-block" id="TabularLoader.get_parent"><a class="viewcode-back" href="../../api/mit_d3m.loaders.html#mit_d3m.loaders.TabularLoader.get_parent">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_parent</span><span class="p">(</span><span class="n">resource_id</span><span class="p">,</span> <span class="n">tables</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">details</span> <span class="ow">in</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">refers_to</span> <span class="o">=</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refersTo&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;resID&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">]:</span>
+                <span class="n">refers_to</span> <span class="o">=</span> <span class="n">column</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refersTo&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;resID&#39;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">refers_to</span> <span class="o">==</span> <span class="n">resource_id</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">table</span><span class="p">,</span> <span class="n">column</span></div>
+                    <span class="k">return</span> <span class="n">table</span><span class="p">,</span> <span class="n">column</span><span class="p">[</span><span class="s1">&#39;colName&#39;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="TabularLoader.get_collection_details"><a class="viewcode-back" href="../../api/mit_d3m.loaders.html#mit_d3m.loaders.TabularLoader.get_collection_details">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_collection_details</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">,</span> <span class="n">resource</span><span class="p">):</span>
@@ -540,22 +541,23 @@
             <span class="n">df</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
             <span class="n">table_name</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;table_name&#39;</span><span class="p">]</span>
 
-            <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
                 <span class="n">refers_to</span> <span class="o">=</span> <span class="n">column</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;refersTo&#39;</span><span class="p">)</span>
-
                 <span class="k">if</span> <span class="n">refers_to</span><span class="p">:</span>
                     <span class="n">res_id</span> <span class="o">=</span> <span class="n">refers_to</span><span class="p">[</span><span class="s1">&#39;resID&#39;</span><span class="p">]</span>
                     <span class="n">res_obj</span> <span class="o">=</span> <span class="n">refers_to</span><span class="p">[</span><span class="s1">&#39;resObject&#39;</span><span class="p">]</span>
 
                     <span class="n">foreign_table_name</span> <span class="o">=</span> <span class="n">table_names</span><span class="p">[</span><span class="n">res_id</span><span class="p">]</span>
 
+                    <span class="n">column_name</span> <span class="o">=</span> <span class="n">column</span><span class="p">[</span><span class="s1">&#39;colName&#39;</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res_obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
 
                         <span class="n">foreign_table_name</span> <span class="o">=</span> <span class="n">table_names</span><span class="p">[</span><span class="n">res_id</span><span class="p">]</span>
 
-                        <span class="k">if</span> <span class="s1">&#39;columnIndex&#39;</span> <span class="ow">in</span> <span class="n">res_obj</span><span class="p">:</span>
-                            <span class="n">column_index</span> <span class="o">=</span> <span class="n">res_obj</span><span class="p">[</span><span class="s1">&#39;columnIndex&#39;</span><span class="p">]</span>
-                            <span class="n">foreign_column_name</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">][</span><span class="n">column_index</span><span class="p">][</span><span class="s1">&#39;colName&#39;</span><span class="p">]</span>
+                        <span class="n">column_index</span> <span class="o">=</span> <span class="n">res_obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;columnIndex&#39;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">column_index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">foreign_table</span> <span class="o">=</span> <span class="n">tables</span><span class="p">[</span><span class="n">foreign_table_name</span><span class="p">]</span>
+                            <span class="n">foreign_column_name</span> <span class="o">=</span> <span class="n">foreign_table</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">][</span><span class="n">column_index</span><span class="p">][</span><span class="s1">&#39;colName&#39;</span><span class="p">]</span>
 
                         <span class="k">else</span><span class="p">:</span>
                             <span class="n">foreign_column_name</span> <span class="o">=</span> <span class="n">res_obj</span><span class="p">[</span><span class="s1">&#39;columnName&#39;</span><span class="p">]</span>
@@ -567,7 +569,6 @@
                             <span class="n">column_name</span><span class="p">,</span>
                         <span class="p">))</span>
 
-                    <span class="c1"># elif table[&#39;table_name&#39;] == &#39;learningData&#39; and res_obj == &#39;item&#39;:</span>
                     <span class="k">elif</span> <span class="n">res_obj</span> <span class="o">==</span> <span class="s1">&#39;item&#39;</span><span class="p">:</span>
                         <span class="n">foreign_column_name</span> <span class="o">=</span> <span class="s1">&#39;d3mIndex&#39;</span>
                         <span class="n">column_name</span> <span class="o">=</span> <span class="s1">&#39;d3mIndex&#39;</span>
@@ -695,7 +696,7 @@
                 <span class="s1">&#39;graph&#39;</span><span class="p">:</span> <span class="n">graphs</span><span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
             <span class="p">}</span>
 
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_type</span> <span class="o">==</span> <span class="s1">&#39;vertex_nomination&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;vertex_nomination&#39;</span><span class="p">,</span> <span class="s1">&#39;vertex_classification&#39;</span><span class="p">):</span>
             <span class="n">graphs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_graphs</span><span class="p">(</span><span class="n">d3mds</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;graphs&#39;</span><span class="p">:</span> <span class="n">graphs</span>
@@ -717,6 +718,8 @@
                 <span class="s1">&#39;graph&#39;</span><span class="p">:</span> <span class="n">graph</span><span class="p">,</span>
                 <span class="s1">&#39;graphs&#39;</span><span class="p">:</span> <span class="n">graphs</span>
             <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unsupported task_type: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task_type</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">context</span></div>
 
@@ -753,7 +756,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, MIT Data To AI Lab
+        &copy; Copyright 2019, MIT Data to AI Lab
 
     </p>
   </div>

@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mit_d3m.loaders module &mdash; mit-d3m 0.1.3-dev documentation</title>
+  <title>mit_d3m.loaders module &mdash; mit-d3m 0.2.0-dev documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="../_static/dai-logo-white.ico"/>
   
   
   
@@ -54,6 +56,9 @@
           
 
           
+            
+            <img src="../_static/dai-logo-white-200.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
@@ -77,12 +82,18 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">mit-d3m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#install">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#install-with-pip">Install with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#install-from-source">Install from source</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="mit_d3m.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="mit_d3m.html#submodules">Submodules</a><ul class="current">
@@ -95,11 +106,9 @@
 <li class="toctree-l3"><a class="reference internal" href="mit_d3m.utils.html">mit_d3m.utils module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="mit_d3m.html#module-mit_d3m">Module contents</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Development Notes</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
@@ -114,11 +123,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../authors.html#development-lead">Development Lead</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
@@ -181,7 +185,7 @@
         
             
             
-              <a href="https://github.com/HDI-Project/mit-d3m/blob/master/docs/api/mit_d3m.loaders.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/HDI-project/mit-d3m/blob/master/docs/api/mit_d3m.loaders.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -197,10 +201,67 @@
             
   <div class="section" id="module-mit_d3m.loaders">
 <span id="mit-d3m-loaders-module"></span><h1>mit_d3m.loaders module<a class="headerlink" href="#module-mit_d3m.loaders" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.Dataset" title="mit_d3m.loaders.Dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dataset</span></code></a>(name[, X, y, context])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.GraphLoader" title="mit_d3m.loaders.GraphLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GraphLoader</span></code></a>(data_modality, task_type)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.ImageLoader" title="mit_d3m.loaders.ImageLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageLoader</span></code></a>(data_modality, task_type)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.Loader" title="mit_d3m.loaders.Loader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Loader</span></code></a>(data_modality, task_type)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.ResourceLoader" title="mit_d3m.loaders.ResourceLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ResourceLoader</span></code></a>(data_modality, task_type)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader" title="mit_d3m.loaders.TabularLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TabularLoader</span></code></a>(data_modality, task_type)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TextLoader" title="mit_d3m.loaders.TextLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextLoader</span></code></a>(data_modality, task_type)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.features_by_type" title="mit_d3m.loaders.features_by_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">features_by_type</span></code></a>(column_types, columns)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.get_loader" title="mit_d3m.loaders.get_loader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_loader</span></code></a>(data_modality, task_type)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="class">
 <dt id="mit_d3m.loaders.Dataset">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.loaders.</code><code class="sig-name descname">Dataset</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">X=None</em>, <em class="sig-param">y=None</em>, <em class="sig-param">context=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.Dataset.get_split" title="mit_d3m.loaders.Dataset.get_split"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_split</span></code></a>(indexes)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mit_d3m.loaders.Dataset.get_split">
 <code class="sig-name descname">get_split</code><span class="sig-paren">(</span><em class="sig-param">indexes</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Dataset.get_split"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Dataset.get_split" title="Permalink to this definition">¶</a></dt>
@@ -212,6 +273,24 @@
 <dt id="mit_d3m.loaders.GraphLoader">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.loaders.</code><code class="sig-name descname">GraphLoader</code><span class="sig-paren">(</span><em class="sig-param">data_modality</em>, <em class="sig-param">task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#GraphLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.GraphLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.Loader" title="mit_d3m.loaders.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.Loader</span></code></a></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.GraphLoader.get_context" title="mit_d3m.loaders.GraphLoader.get_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_context</span></code></a>(X, d3mds)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.GraphLoader.load" title="mit_d3m.loaders.GraphLoader.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(d3mds)</p></td>
+<td><p>Load X, y and context from D3MDS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.GraphLoader.load_graphs" title="mit_d3m.loaders.GraphLoader.load_graphs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_graphs</span></code></a>(d3mds[, max_graphs])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mit_d3m.loaders.GraphLoader.get_context">
 <code class="sig-name descname">get_context</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#GraphLoader.get_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.GraphLoader.get_context" title="Permalink to this definition">¶</a></dt>
@@ -234,6 +313,33 @@
 <dt id="mit_d3m.loaders.ImageLoader">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.loaders.</code><code class="sig-name descname">ImageLoader</code><span class="sig-paren">(</span><em class="sig-param">data_modality</em>, <em class="sig-param">task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ImageLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ImageLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.ResourceLoader" title="mit_d3m.loaders.ResourceLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.ResourceLoader</span></code></a></p>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.ImageLoader.EPOCHS" title="mit_d3m.loaders.ImageLoader.EPOCHS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EPOCHS</span></code></a></p></td>
+<td><p>int(x=0) -&gt; integer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.ImageLoader.INPUT_SHAPE" title="mit_d3m.loaders.ImageLoader.INPUT_SHAPE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">INPUT_SHAPE</span></code></a></p></td>
+<td><p>list() -&gt; new empty list</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.ImageLoader.load_resources" title="mit_d3m.loaders.ImageLoader.load_resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_resources</span></code></a>(X, resource_column, d3mds)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="mit_d3m.loaders.ImageLoader.EPOCHS">
 <code class="sig-name descname">EPOCHS</code><em class="property"> = 1</em><a class="headerlink" href="#mit_d3m.loaders.ImageLoader.EPOCHS" title="Permalink to this definition">¶</a></dt>
@@ -255,6 +361,21 @@
 <dt id="mit_d3m.loaders.Loader">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.loaders.</code><code class="sig-name descname">Loader</code><span class="sig-paren">(</span><em class="sig-param">data_modality</em>, <em class="sig-param">task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Loader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Loader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.Loader.load" title="mit_d3m.loaders.Loader.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(d3mds)</p></td>
+<td><p>Load X, y and context from D3MDS.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.Loader.to_dict" title="mit_d3m.loaders.Loader.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dict</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mit_d3m.loaders.Loader.load">
 <code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#Loader.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.Loader.load" title="Permalink to this definition">¶</a></dt>
@@ -272,6 +393,24 @@
 <dt id="mit_d3m.loaders.ResourceLoader">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.loaders.</code><code class="sig-name descname">ResourceLoader</code><span class="sig-paren">(</span><em class="sig-param">data_modality</em>, <em class="sig-param">task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ResourceLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ResourceLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.Loader" title="mit_d3m.loaders.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.Loader</span></code></a></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.ResourceLoader.get_context" title="mit_d3m.loaders.ResourceLoader.get_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_context</span></code></a>(X, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.ResourceLoader.load" title="mit_d3m.loaders.ResourceLoader.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(d3mds)</p></td>
+<td><p>Load X, y and context from D3MDS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.ResourceLoader.load_resources" title="mit_d3m.loaders.ResourceLoader.load_resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_resources</span></code></a>(resources_names, d3mds)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mit_d3m.loaders.ResourceLoader.get_context">
 <code class="sig-name descname">get_context</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#ResourceLoader.get_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.ResourceLoader.get_context" title="Permalink to this definition">¶</a></dt>
@@ -294,9 +433,66 @@
 <dt id="mit_d3m.loaders.TabularLoader">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.loaders.</code><code class="sig-name descname">TabularLoader</code><span class="sig-paren">(</span><em class="sig-param">data_modality</em>, <em class="sig-param">task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.Loader" title="mit_d3m.loaders.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.Loader</span></code></a></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.analyze_columns" title="mit_d3m.loaders.TabularLoader.analyze_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analyze_columns</span></code></a>(columns, data)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.build_columns" title="mit_d3m.loaders.TabularLoader.build_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_columns</span></code></a>(data, name)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.find_privileged_features" title="mit_d3m.loaders.TabularLoader.find_privileged_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_privileged_features</span></code></a>(dataset_doc, tables)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.get_collection_details" title="mit_d3m.loaders.TabularLoader.get_collection_details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_collection_details</span></code></a>(dataset_root, resource)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.get_columns" title="mit_d3m.loaders.TabularLoader.get_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_columns</span></code></a>(resource, data, name)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.get_parent" title="mit_d3m.loaders.TabularLoader.get_parent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parent</span></code></a>(resource_id, tables)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.get_relationships" title="mit_d3m.loaders.TabularLoader.get_relationships"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_relationships</span></code></a>(tables)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.get_resources" title="mit_d3m.loaders.TabularLoader.get_resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_resources</span></code></a>(d3mds)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.load" title="mit_d3m.loaders.TabularLoader.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(d3mds)</p></td>
+<td><p>Load X, y and context from D3MDS.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.load_collection" title="mit_d3m.loaders.TabularLoader.load_collection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_collection</span></code></a>(tables, dataset_root, resource)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.load_collection_data" title="mit_d3m.loaders.TabularLoader.load_collection_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_collection_data</span></code></a>(path, parent_table, …)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.load_table" title="mit_d3m.loaders.TabularLoader.load_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_table</span></code></a>(dataset_root, resource)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.load_tables" title="mit_d3m.loaders.TabularLoader.load_tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_tables</span></code></a>(d3mds)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.make_index" title="mit_d3m.loaders.TabularLoader.make_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_index</span></code></a>(data, name)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.map_dtype_to_d3m_type" title="mit_d3m.loaders.TabularLoader.map_dtype_to_d3m_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_dtype_to_d3m_type</span></code></a>(dtype)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.loaders.TabularLoader.remove_privileged_features" title="mit_d3m.loaders.TabularLoader.remove_privileged_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_privileged_features</span></code></a>(dataset_doc, tables)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mit_d3m.loaders.TabularLoader.analyze_columns">
-<em class="property">classmethod </em><code class="sig-name descname">analyze_columns</code><span class="sig-paren">(</span><em class="sig-param">columns_list</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.analyze_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.analyze_columns" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">analyze_columns</code><span class="sig-paren">(</span><em class="sig-param">columns</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TabularLoader.analyze_columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TabularLoader.analyze_columns" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -381,6 +577,18 @@
 <dt id="mit_d3m.loaders.TextLoader">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.loaders.</code><code class="sig-name descname">TextLoader</code><span class="sig-paren">(</span><em class="sig-param">data_modality</em>, <em class="sig-param">task_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TextLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TextLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mit_d3m.loaders.ResourceLoader" title="mit_d3m.loaders.ResourceLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">mit_d3m.loaders.ResourceLoader</span></code></a></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.loaders.TextLoader.load_resources" title="mit_d3m.loaders.TextLoader.load_resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_resources</span></code></a>(X, resource_column, d3mds)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mit_d3m.loaders.TextLoader.load_resources">
 <code class="sig-name descname">load_resources</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">resource_column</em>, <em class="sig-param">d3mds</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/loaders.html#TextLoader.load_resources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.loaders.TextLoader.load_resources" title="Permalink to this definition">¶</a></dt>
@@ -420,7 +628,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, MIT Data To AI Lab
+        &copy; Copyright 2019, MIT Data to AI Lab
 
     </p>
   </div>

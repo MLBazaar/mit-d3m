@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mit_d3m package &mdash; mit-d3m 0.1.3-dev documentation</title>
+  <title>mit_d3m package &mdash; mit-d3m 0.2.0-dev documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="../_static/dai-logo-white.ico"/>
   
   
   
@@ -36,7 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="mit_d3m.config module" href="mit_d3m.config.html" />
-    <link rel="prev" title="Usage" href="../usage.html" /> 
+    <link rel="prev" title="mit-d3m" href="../readme.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,6 +55,9 @@
             <a href="../index.html" class="icon icon-home"> mit-d3m
           
 
+          
+            
+            <img src="../_static/dai-logo-white-200.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,12 +82,18 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">mit-d3m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#install">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#install-with-pip">Install with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#install-from-source">Install from source</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a><ul>
@@ -95,11 +106,9 @@
 <li class="toctree-l3"><a class="reference internal" href="mit_d3m.utils.html">mit_d3m.utils module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mit_d3m">Module contents</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Development Notes</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
@@ -114,11 +123,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../authors.html#development-lead">Development Lead</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
@@ -179,7 +183,7 @@
         
             
             
-              <a href="https://github.com/HDI-Project/mit-d3m/blob/master/docs/api/mit_d3m.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/HDI-project/mit-d3m/blob/master/docs/api/mit_d3m.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -193,24 +197,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-mit_d3m">
-<span id="mit-d3m-package"></span><h1>mit_d3m package<a class="headerlink" href="#module-mit_d3m" title="Permalink to this headline">¶</a></h1>
-<p>Top-level package for mit-d3m.</p>
-<dl class="function">
-<dt id="mit_d3m.download_dataset">
-<code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">download_dataset</code><span class="sig-paren">(</span><em class="sig-param">bucket</em>, <em class="sig-param">dataset</em>, <em class="sig-param">root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#download_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.download_dataset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="mit_d3m.load_d3mds">
-<code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">load_d3mds</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">force_download=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#load_d3mds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.load_d3mds" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="mit_d3m.load_dataset">
-<code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">load_dataset</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">force_download=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#load_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.load_dataset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+  <div class="section" id="mit-d3m-package">
+<h1>mit_d3m package<a class="headerlink" href="#mit-d3m-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -225,6 +213,43 @@
 </ul>
 </div>
 </div>
+<div class="section" id="module-mit_d3m">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mit_d3m" title="Permalink to this headline">¶</a></h2>
+<p>Top-level package for mit-d3m.</p>
+<p><strong>Functions</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.download_dataset" title="mit_d3m.download_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_dataset</span></code></a>(bucket, dataset, root_dir)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.load_d3mds" title="mit_d3m.load_d3mds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_d3mds</span></code></a>(dataset[, root, force_download])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.load_dataset" title="mit_d3m.load_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_dataset</span></code></a>(dataset[, root, force_download])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="mit_d3m.download_dataset">
+<code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">download_dataset</code><span class="sig-paren">(</span><em class="sig-param">bucket</em>, <em class="sig-param">dataset</em>, <em class="sig-param">root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#download_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.download_dataset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mit_d3m.load_d3mds">
+<code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">load_d3mds</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">root='data'</em>, <em class="sig-param">force_download=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#load_d3mds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.load_d3mds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mit_d3m.load_dataset">
+<code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">load_dataset</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">root='data'</em>, <em class="sig-param">force_download=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#load_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.load_dataset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 </div>
 
 
@@ -238,7 +263,7 @@
         <a href="mit_d3m.config.html" class="btn btn-neutral float-right" title="mit_d3m.config module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../readme.html" class="btn btn-neutral float-left" title="mit-d3m" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -247,7 +272,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, MIT Data To AI Lab
+        &copy; Copyright 2019, MIT Data to AI Lab
 
     </p>
   </div>

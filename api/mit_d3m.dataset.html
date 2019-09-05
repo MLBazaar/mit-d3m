@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mit_d3m.dataset module &mdash; mit-d3m 0.1.3-dev documentation</title>
+  <title>mit_d3m.dataset module &mdash; mit-d3m 0.2.0-dev documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="../_static/dai-logo-white.ico"/>
   
   
   
@@ -54,6 +56,9 @@
           
 
           
+            
+            <img src="../_static/dai-logo-white-200.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
@@ -77,12 +82,18 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">mit-d3m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#install">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#install-with-pip">Install with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#install-from-source">Install from source</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Advanced Usage</span></p>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="mit_d3m.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="mit_d3m.html#submodules">Submodules</a><ul class="current">
@@ -95,11 +106,9 @@
 <li class="toctree-l3"><a class="reference internal" href="mit_d3m.utils.html">mit_d3m.utils module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="mit_d3m.html#module-mit_d3m">Module contents</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Development Notes</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
@@ -114,11 +123,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../authors.html#development-lead">Development Lead</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
@@ -181,7 +185,7 @@
         
             
             
-              <a href="https://github.com/HDI-Project/mit-d3m/blob/master/docs/api/mit_d3m.dataset.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/HDI-project/mit-d3m/blob/master/docs/api/mit_d3m.dataset.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -197,10 +201,79 @@
             
   <div class="section" id="module-mit_d3m.dataset">
 <span id="mit-d3m-dataset-module"></span><h1>mit_d3m.dataset module<a class="headerlink" href="#module-mit_d3m.dataset" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS" title="mit_d3m.dataset.D3MDS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D3MDS</span></code></a>(dataset, problem)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset" title="mit_d3m.dataset.D3MDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D3MDataset</span></code></a>(dataset)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MProblem" title="mit_d3m.dataset.D3MProblem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">D3MProblem</span></code></a>(problem)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.pythonize" title="mit_d3m.dataset.pythonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pythonize</span></code></a>(name)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="class">
 <dt id="mit_d3m.dataset.D3MDS">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.dataset.</code><code class="sig-name descname">D3MDS</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">problem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_columns" title="mit_d3m.dataset.D3MDS.get_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_columns</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_data" title="mit_d3m.dataset.D3MDS.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_data</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_data_modality" title="mit_d3m.dataset.D3MDS.get_data_modality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_data_modality</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_metric" title="mit_d3m.dataset.D3MDS.get_metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_metric</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_problem_id" title="mit_d3m.dataset.D3MDS.get_problem_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_problem_id</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_related_resources" title="mit_d3m.dataset.D3MDS.get_related_resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_related_resources</span></code></a>(data_modality)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_resources_dir" title="mit_d3m.dataset.D3MDS.get_resources_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_resources_dir</span></code></a>(data_modality)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_task_subtype" title="mit_d3m.dataset.D3MDS.get_task_subtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_subtype</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.get_task_type" title="mit_d3m.dataset.D3MDS.get_task_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_type</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDS.load_graphs" title="mit_d3m.dataset.D3MDS.load_graphs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_graphs</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="mit_d3m.dataset.D3MDS.dataset">
 <code class="sig-name descname">dataset</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MDS.dataset" title="Permalink to this definition">¶</a></dt>
@@ -267,6 +340,48 @@
 <dt id="mit_d3m.dataset.D3MDataset">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.dataset.</code><code class="sig-name descname">D3MDataset</code><span class="sig-paren">(</span><em class="sig-param">dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_data_modality" title="mit_d3m.dataset.D3MDataset.get_data_modality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_data_modality</span></code></a>()</p></td>
+<td><p>Detect the data modality based on the resource_types.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_datasetID" title="mit_d3m.dataset.D3MDataset.get_datasetID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_datasetID</span></code></a>()</p></td>
+<td><p>Get the datasetID from datasetDoc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_dataset_schema_version" title="mit_d3m.dataset.D3MDataset.get_dataset_schema_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dataset_schema_version</span></code></a>()</p></td>
+<td><p>Get the dataset schema version that was used to create this dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_graph_resources" title="mit_d3m.dataset.D3MDataset.get_graph_resources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_graph_resources</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_graphs_as_nx" title="mit_d3m.dataset.D3MDataset.get_graphs_as_nx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_graphs_as_nx</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_image_path" title="mit_d3m.dataset.D3MDataset.get_image_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_image_path</span></code></a>()</p></td>
+<td><p>Returns the path of the directory containing images if they exist in this dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_learning_data" title="mit_d3m.dataset.D3MDataset.get_learning_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_learning_data</span></code></a>()</p></td>
+<td><p>Get the contents of learningData.doc as a DataFrame.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_learning_data_columns" title="mit_d3m.dataset.D3MDataset.get_learning_data_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_learning_data_columns</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_related_resource_names" title="mit_d3m.dataset.D3MDataset.get_related_resource_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_related_resource_names</span></code></a>(resource_type)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_resource_types" title="mit_d3m.dataset.D3MDataset.get_resource_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_resource_types</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MDataset.get_text_path" title="mit_d3m.dataset.D3MDataset.get_text_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_text_path</span></code></a>()</p></td>
+<td><p>Returns the path of the directory containing text if they exist in this dataset.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="mit_d3m.dataset.D3MDataset.dsDoc">
 <code class="sig-name descname">dsDoc</code><em class="property"> = None</em><a class="headerlink" href="#mit_d3m.dataset.D3MDataset.dsDoc" title="Permalink to this definition">¶</a></dt>
@@ -353,6 +468,33 @@ resource_types == [‘table’, ‘something_else’…] =&gt; ‘something_else
 <dt id="mit_d3m.dataset.D3MProblem">
 <em class="property">class </em><code class="sig-prename descclassname">mit_d3m.dataset.</code><code class="sig-name descname">D3MProblem</code><span class="sig-paren">(</span><em class="sig-param">problem</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MProblem.get_performance_metrics" title="mit_d3m.dataset.D3MProblem.get_performance_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_performance_metrics</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MProblem.get_problem_id" title="mit_d3m.dataset.D3MProblem.get_problem_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_problem_id</span></code></a>()</p></td>
+<td><p>Get the problemID from problemDoc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MProblem.get_problem_schema_version" title="mit_d3m.dataset.D3MProblem.get_problem_schema_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_problem_schema_version</span></code></a>()</p></td>
+<td><p>Get the problem schema version that was used to create this dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MProblem.get_target_column_names" title="mit_d3m.dataset.D3MProblem.get_target_column_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_target_column_names</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MProblem.get_task_subtype" title="mit_d3m.dataset.D3MProblem.get_task_subtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_subtype</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.dataset.D3MProblem.get_task_type" title="mit_d3m.dataset.D3MProblem.get_task_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_type</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="mit_d3m.dataset.D3MProblem.get_performance_metrics">
 <code class="sig-name descname">get_performance_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m/dataset.html#D3MProblem.get_performance_metrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.dataset.D3MProblem.get_performance_metrics" title="Permalink to this definition">¶</a></dt>
@@ -429,7 +571,7 @@ resource_types == [‘table’, ‘something_else’…] =&gt; ‘something_else
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, MIT Data To AI Lab
+        &copy; Copyright 2019, MIT Data to AI Lab
 
     </p>
   </div>
