@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at the `GitHub Issues page`_.
+Report bugs at https://github.com/HDI-Project/mit-d3m/issues.
 
 If you are reporting a bug, please include:
 
@@ -45,7 +45,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at the `GitHub Issues page`_.
+The best way to send feedback is to file an issue at https://github.com/HDI-Project/mit-d3m/issues.
 
 If you are proposing a feature:
 
@@ -75,32 +75,27 @@ Ready to contribute? Here's how to set up `mit-d3m` for local development.
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
-   Try to use the naming scheme of prefixing your branch with ``gh-X`` where X is
-   the associated issue, such as ``gh-3-fix-foo-bug``. And if you are not
-   developing on your own fork, further prefix the branch with your GitHub
-   username, like ``githubusername/gh-3-fix-foo-bug``.
-
    Now you can make your changes locally.
 
 5. While hacking your changes, make sure to cover all your developments with the required
    unit tests, and that none of the old tests fail as a consequence of your changes.
    For this, make sure to run the tests suite and check the code coverage::
 
-    $ make lint       # Check code styling
     $ make test       # Run the tests
     $ make coverage   # Get the coverage report
 
-6. When you're done making changes, check that your changes pass all the styling checks and
-   tests, including other Python supported versions, using::
+6. When you're done making changes, check that your changes pass flake8 and the
+   tests, including testing other Python versions with tox::
 
-    $ make test-all
+    $ make lint       # Check code styling
+    $ make test-all   # Execute tests on all python versions
 
 7. Make also sure to include the necessary documentation in the code as docstrings following
-   the `Google docstrings style`_.
+   the `google docstring`_ style.
    If you want to view how your documentation will look like when it is published, you can
    generate and view the docs with this command::
 
-    $ make view-docs
+    $ make viewdocs
 
 8. Commit your changes and push your branch to GitHub::
 
@@ -109,6 +104,8 @@ Ready to contribute? Here's how to set up `mit-d3m` for local development.
     $ git push origin name-of-your-bugfix-or-feature
 
 9. Submit a pull request through the GitHub website.
+
+.. _google docstring: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
 
 Pull Request Guidelines
 -----------------------
@@ -122,9 +119,10 @@ Before you submit a pull request, check that it meets these guidelines:
 3. The pull request should include unit tests that cover all the changed code
 4. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
-   feature to the documentation in an appropriate place.
-5. The pull request should work for all the supported Python versions. Check the `Travis Build
-   Status page`_ and make sure that all the checks pass.
+   feature to the list in README.rst.
+5. The pull request should work for Python2.7, 3.4, 3.5 and 3.6. Check
+   https://travis-ci.org/HDI-Project/mit-d3m/pull_requests
+   and make sure that all the checks pass.
 
 Unit Testing Guidelines
 -----------------------
@@ -133,11 +131,10 @@ All the Unit Tests should comply with the following requirements:
 
 1. Unit Tests should be based only in unittest and pytest modules.
 
-2. The tests that cover a module called ``mit_d3m/path/to/a_module.py``
-   should be implemented in a separated module called
-   ``tests/mit_d3m/path/to/test_a_module.py``.
+2. The tests that cover a module called ``mit_d3m/path/to/a_module.py`` should be
+   implemented in a separated module called ``tests/mit_d3m/path/to/test_a_module.py``.
    Note that the module name has the ``test_`` prefix and is located in a path similar
-   to the one of the tested module, just inside the ``tests`` folder.
+   to the one of the tested module, just inside te ``tests`` folder.
 
 3. Each method of the tested module should have at least one associated test method, and
    each test method should cover only **one** use case or scenario.
@@ -157,7 +154,7 @@ All the Unit Tests should comply with the following requirements:
    the only thing that will be tested is that our code passes the right values to them.
 
 7. Unit tests should not use anything from outside the test and the code being tested. This
-   includes not reading or writing to any file system or database, which will be properly
+   includes not reading or writting to any filesystem or database, which will be properly
    mocked.
 
 Tips
@@ -165,8 +162,7 @@ Tips
 
 To run a subset of tests::
 
-    $ python -m pytest tests.test_mit_d3m
-    $ python -m pytest -k 'foo'
+    $ pytest tests.test_mit_d3m
 
 Release Workflow
 ----------------
@@ -175,8 +171,7 @@ The process of releasing a new version involves several steps combining both ``g
 ``bumpversion`` which, briefly:
 
 1. Merge what is in ``master`` branch into ``stable`` branch.
-2. Update the version in ``setup.cfg``, ``mit_d3m/__init__.py`` and
-   ``HISTORY.md`` files.
+2. Update the version in ``setup.cfg``, ``mit_d3m/__init__.py`` and ``HISTORY.md`` files.
 3. Create a new git tag pointing at the corresponding commit in ``stable`` branch.
 4. Merge the new commit from ``stable`` into ``master``.
 5. Update the version in ``setup.cfg`` and ``mit_d3m/__init__.py``
@@ -200,7 +195,3 @@ Once this is done, run of the following commands:
 3. If you are releasing a major version::
 
     make release-major
-
-.. _GitHub issues page: https://github.com/HDI-Project/mit-d3m/issues
-.. _Travis Build Status page: https://travis-ci.org/HDI-Project/mit-d3m/pull_requests
-.. _Google docstrings style: https://google.github.io/styleguide/pyguide.html?showone=Comments#Comments

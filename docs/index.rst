@@ -1,27 +1,17 @@
-.. mdinclude:: ../README.md
+.. include:: readme.rst
 
 .. toctree::
-   :hidden:
-   :titlesonly:
+   :caption: Getting Started
+   :maxdepth: 2
 
-   Overview <self>
-   installation
-   usage
+   Overview <readme>
 
 .. toctree::
-   :caption: Advanced Usage
-   :hidden:
+   :caption: Resources
 
    API Reference <api/mit_d3m>
-
-.. toctree::
-   :caption: Development Notes
-   :hidden:
-
    contributing
-   authors
    history
-
 
 Indices and tables
 ==================

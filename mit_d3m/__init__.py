@@ -4,7 +4,7 @@
 
 __author__ = """MIT Data To AI Lab"""
 __email__ = 'dailabmit@gmail.com'
-__version__ = '0.1.3-dev'
+__version__ = '0.2.0-dev'
 
 import os
 import shutil
@@ -38,13 +38,13 @@ def download_dataset(bucket, dataset, root_dir):
         tf.extractall(os.path.dirname(root_dir))
 
 
-def load_d3mds(dataset, force_download=False):
+def load_d3mds(dataset, root=DATA_PATH, force_download=False):
     if dataset.endswith('_dataset_TRAIN'):
         dataset = dataset[:-14]
 
-    root_dir = os.path.join(DATA_PATH, dataset)
+    root_dir = os.path.join(root, dataset)
 
-    if force_download or not os.path.exists(root_dir):
+    if root == DATA_PATH and (force_download or not os.path.exists(root_dir)):
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
 
@@ -57,9 +57,9 @@ def load_d3mds(dataset, force_download=False):
     return D3MDS(dataset=dataset_path, problem=problem_path)
 
 
-def load_dataset(dataset, force_download=False):
+def load_dataset(dataset, root=DATA_PATH, force_download=False):
 
-    d3mds = load_d3mds(dataset, force_download)
+    d3mds = load_d3mds(dataset, root, force_download)
 
     loader = get_loader(
         d3mds.get_data_modality(),

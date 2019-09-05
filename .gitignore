@@ -64,6 +64,10 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/mlprimitives.rst
+docs/mlprimitives.*.rst
+docs/modules.rst
+docs/api
 
 # PyBuilder
 target/
@@ -101,8 +105,13 @@ ENV/
 # mypy
 .mypy_cache/
 
+# other
+.DS_Store
+
 # vim
 .*.swp
 
+# IntelliJ Idea
+.idea/
+
 data
-docs/api
