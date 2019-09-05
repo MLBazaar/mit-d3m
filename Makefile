@@ -207,7 +207,7 @@ check-release: check-master check-history ## Check if the release can be made
 release: check-release bumpversion-release publish bumpversion-patch
 
 .PHONY: release-build
-release-build: check-master bumpversion-build publish
+release-build: check-master publish bumpversion-build
 
 .PHONY: release-minor
 release-minor: check-release bumpversion-minor release
@@ -217,6 +217,3 @@ release-major: check-release bumpversion-major release
 
 .PHONY: test-release
 test-release: check-release test-bumpversion-release test-publish test-bumpversion-patch
-
-.PHONY: test-release-build
-test-release-build: check-master bumpversion-build test-publish
