@@ -38,11 +38,8 @@ class D3MDataset:
         """
         for res in self.dsDoc['dataResources']:
             resPath = res['resPath']
-            resType = res['resType']
 
-            dirname = os.path.basename(os.path.normpath(os.path.dirname(resPath)))
-
-            if 'learningData.csv' in res['resPath']:
+            if 'learningData.csv' in resPath:
                 return os.path.join(self.dsHome, resPath)
 
         # if the for loop is over and learningDoc is not found, then return None
