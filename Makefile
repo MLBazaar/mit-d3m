@@ -173,6 +173,10 @@ test-bumpversion-patch: ## Merge stable to master and bumpversion patch
 	git merge stable
 	bumpversion --no-tag patch
 
+.PHONY: bumpversion-build
+bumpversion-build: ## Bump the version to the next build
+	bumpversion build --no-tag
+
 .PHONY: bumpversion-minor
 bumpversion-minor: ## Bump the version the next minor skipping the release
 	bumpversion --no-tag minor
@@ -184,17 +188,26 @@ bumpversion-major: ## Bump the version the next major skipping the release
 CURRENT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 CHANGELOG_LINES := $(shell git diff HEAD..origin/stable HISTORY.md 2>&1 | wc -l)
 
-.PHONY: check-release
-check-release: ## Check if the release can be made
+.PHONY: check-master
+check-master: ## Check if we are in master branch
 ifneq ($(CURRENT_BRANCH),master)
 	$(error Please make the release from master branch\n)
 endif
+
+.PHONY: check-history
+check-history: ## Check if HISTORY.md has been modified
 ifeq ($(CHANGELOG_LINES),0)
 	$(error Please insert the release notes in HISTORY.md before releasing)
 endif
 
+.PHONY: check-release
+check-release: check-master check-history ## Check if the release can be made
+
 .PHONY: release
 release: check-release bumpversion-release publish bumpversion-patch
+
+.PHONY: release-build
+release-build: check-master bumpversion-build publish
 
 .PHONY: release-minor
 release-minor: check-release bumpversion-minor release
@@ -204,3 +217,6 @@ release-major: check-release bumpversion-major release
 
 .PHONY: test-release
 test-release: check-release test-bumpversion-release test-publish test-bumpversion-patch
+
+.PHONY: test-release-build
+test-release-build: check-master bumpversion-build test-publish

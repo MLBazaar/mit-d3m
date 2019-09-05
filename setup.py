@@ -94,6 +94,6 @@ setup(
     test_suite='tests',
     tests_require=tests_require,
     url='https://github.com/HDI-Project/mit-d3m',
-    version='0.2.0-dev',
+    version='0.2.0-dev0',
     zip_safe=False,
 )
