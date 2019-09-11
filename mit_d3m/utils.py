@@ -27,7 +27,7 @@ def disk_usage(path, human=False):
     """disk usage in bytes or human readable format (e.g. '2,1GB')"""
     command = ['du', '-s', path]
     if human:
-        command.append('-h')
+        command.insert(-1, '-h')
 
     return subprocess.check_output(command).split()[0].decode('utf-8')
 

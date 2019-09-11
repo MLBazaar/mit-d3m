@@ -1,5 +1,11 @@
 # History
 
+## 0.2.0
+
+* `disk_usage` fails on macOS/BSD with human=True
+* Support latest d3m schema versions
+* Support python 3.7+
+
 ## 0.1.2
 
 * Set the d3mIndex column as a DataFrame column in the TabularLoader

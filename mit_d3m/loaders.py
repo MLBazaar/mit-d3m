@@ -7,7 +7,6 @@ from collections import OrderedDict
 import networkx as nx
 import numpy as np
 import pandas as pd
-from keras.preprocessing.image import img_to_array, load_img
 
 from mit_d3m.utils import available_memory, used_memory
 
@@ -133,21 +132,18 @@ class TabularLoader(Loader):
             return 'categorical'
 
     @classmethod
-    def analyze_columns(cls, columns_list, data):
-        columns = dict()
+    def analyze_columns(cls, columns, data):
         index = None
         time_index = None
         targets = []
 
-        for column in columns_list:
+        for column in columns:
             column_name = column['colName']
 
             if 'suggestedTarget' in column['role']:
                 targets.append(column_name)
 
             else:
-                columns[column_name] = column
-
                 if 'index' in column['role']:
                     if index:
                         raise ValueError("Multiple indexes found")
@@ -172,14 +168,14 @@ class TabularLoader(Loader):
     def build_columns(cls, data, name):
         index = cls.make_index(data, name)
 
-        columns = {
-            column_name: {
+        columns = [
+            {
                 'colIndex': column_index,
                 'colName': column_name,
                 'colType': cls.map_dtype_to_d3m_type(data[column_name].dtype)
             }
             for column_index, column_name in enumerate(data)
-        }
+        ]
 
         time_index = None
         if 'time' in data.columns:
@@ -225,10 +221,10 @@ class TabularLoader(Loader):
     @staticmethod
     def get_parent(resource_id, tables):
         for table in tables.values():
-            for column, details in table['columns'].items():
-                refers_to = details.get('refersTo', dict()).get('resID')
+            for column in table['columns']:
+                refers_to = column.get('refersTo', dict()).get('resID')
                 if refers_to == resource_id:
-                    return table, column
+                    return table, column['colName']
 
     @staticmethod
     def get_collection_details(dataset_root, resource):
@@ -348,22 +344,23 @@ class TabularLoader(Loader):
             df = table['data']
             table_name = table['table_name']
 
-            for column_name, column in columns.items():
+            for column in columns:
                 refers_to = column.get('refersTo')
-
                 if refers_to:
                     res_id = refers_to['resID']
                     res_obj = refers_to['resObject']
 
                     foreign_table_name = table_names[res_id]
 
+                    column_name = column['colName']
                     if column_name in df.columns and isinstance(res_obj, dict):
 
                         foreign_table_name = table_names[res_id]
 
-                        if 'columnIndex' in res_obj:
-                            column_index = res_obj['columnIndex']
-                            foreign_column_name = table['columns'][column_index]['colName']
+                        column_index = res_obj.get('columnIndex')
+                        if column_index is not None:
+                            foreign_table = tables[foreign_table_name]
+                            foreign_column_name = foreign_table['columns'][column_index]['colName']
 
                         else:
                             foreign_column_name = res_obj['columnName']
@@ -375,7 +372,6 @@ class TabularLoader(Loader):
                             column_name,
                         ))
 
-                    # elif table['table_name'] == 'learningData' and res_obj == 'item':
                     elif res_obj == 'item':
                         foreign_column_name = 'd3mIndex'
                         column_name = 'd3mIndex'
@@ -442,6 +438,8 @@ class ImageLoader(ResourceLoader):
     EPOCHS = 1
 
     def load_resources(self, X, resource_column, d3mds):
+        from keras.preprocessing.image import img_to_array, load_img  # noqa
+
         LOGGER.info("Loading %s images", len(X))
 
         image_dir = d3mds.get_resources_dir('image')
@@ -503,7 +501,7 @@ class GraphLoader(Loader):
                 'graph': graphs[columns[-1]]
             }
 
-        elif self.task_type == 'vertex_nomination':
+        elif self.task_type in ('vertex_nomination', 'vertex_classification'):
             graphs = self.load_graphs(d3mds, 1)
             context = {
                 'graphs': graphs
@@ -525,6 +523,8 @@ class GraphLoader(Loader):
                 'graph': graph,
                 'graphs': graphs
             }
+        else:
+            raise ValueError('Unsupported task_type: {}'.format(self.task_type))
 
         return context
 
