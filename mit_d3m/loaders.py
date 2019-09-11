@@ -7,7 +7,6 @@ from collections import OrderedDict
 import networkx as nx
 import numpy as np
 import pandas as pd
-from keras.preprocessing.image import img_to_array, load_img
 
 from mit_d3m.utils import available_memory, used_memory
 
@@ -439,6 +438,8 @@ class ImageLoader(ResourceLoader):
     EPOCHS = 1
 
     def load_resources(self, X, resource_column, d3mds):
+        from keras.preprocessing.image import img_to_array, load_img  # noqa
+
         LOGGER.info("Loading %s images", len(X))
 
         image_dir = d3mds.get_resources_dir('image')
