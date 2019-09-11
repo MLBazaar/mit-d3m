@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mit_d3m.loaders &mdash; mit-d3m 0.2.0-dev1 documentation</title>
+  <title>mit_d3m.loaders &mdash; mit-d3m 0.2.1-dev0 documentation</title>
   
 
   
@@ -124,9 +124,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../history.html#id1">0.1.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../history.html#id2">0.1.1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../history.html#id3">0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html#id1">0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html#id2">0.1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html#id3">0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html#id4">0.1.0</a></li>
 </ul>
 </li>
 </ul>
@@ -203,7 +204,6 @@
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">keras.preprocessing.image</span> <span class="k">import</span> <span class="n">img_to_array</span><span class="p">,</span> <span class="n">load_img</span>
 
 <span class="kn">from</span> <span class="nn">mit_d3m.utils</span> <span class="k">import</span> <span class="n">available_memory</span><span class="p">,</span> <span class="n">used_memory</span>
 
@@ -635,6 +635,8 @@
     <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">1</span>
 
 <div class="viewcode-block" id="ImageLoader.load_resources"><a class="viewcode-back" href="../../api/mit_d3m.loaders.html#mit_d3m.loaders.ImageLoader.load_resources">[docs]</a>    <span class="k">def</span> <span class="nf">load_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">resource_column</span><span class="p">,</span> <span class="n">d3mds</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">keras.preprocessing.image</span> <span class="k">import</span> <span class="n">img_to_array</span><span class="p">,</span> <span class="n">load_img</span>  <span class="c1"># noqa</span>
+
         <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Loading </span><span class="si">%s</span><span class="s2"> images&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 
         <span class="n">image_dir</span> <span class="o">=</span> <span class="n">d3mds</span><span class="o">.</span><span class="n">get_resources_dir</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">)</span>
