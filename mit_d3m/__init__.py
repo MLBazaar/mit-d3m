@@ -11,6 +11,8 @@ import shutil
 import tarfile
 
 import boto3
+import botocore
+import botocore.config
 
 from mit_d3m.dataset import D3MDS
 from mit_d3m.loaders import get_loader
@@ -20,9 +22,14 @@ DATA_PATH = 'data'
 BUCKET = 'd3m-data-dai'
 
 
-def download_dataset(bucket, dataset, root_dir):
-    client = boto3.client('s3')
+def get_client():
+    config = botocore.config.Config(signature_version=botocore.UNSIGNED)
+    client = boto3.client('s3', config=config)
+    return client
 
+
+def download_dataset(bucket, dataset, root_dir):
+    client = get_client()
     print("Downloading dataset {}".format(dataset))
 
     key = 'datasets/' + dataset + '.tar.gz'
