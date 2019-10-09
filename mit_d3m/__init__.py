@@ -33,9 +33,18 @@ def get_client():
 def download_dataset(bucket, dataset, root_dir):
     client = get_client()
     print("Downloading dataset {}".format(dataset))
+def get_dataset_tarfile_path(datapath, dataset):
+    return os.path.join(datapath, '{dataset}.tar.gz'.format(dataset=dataset))
+
+
+def get_dataset_dir(datapath, dataset):
+    return os.path.join(datapath, dataset)
+
 
     key = 'datasets/' + dataset + '.tar.gz'
     filename = root_dir + '.tar.gz'
+def get_dataset_s3_key(dataset):
+    return 'datasets/{dataset}.tar.gz'.format(dataset=dataset)
 
     print("Getting file {} from S3 bucket {}".format(key, bucket))
     client.download_file(Bucket=bucket, Key=key, Filename=filename)
@@ -45,6 +54,18 @@ def download_dataset(bucket, dataset, root_dir):
     print("Extracting {}".format(filename))
     with tarfile.open(filename, 'r:gz') as tf:
         tf.extractall(os.path.dirname(root_dir))
+def contains_files(d):
+    for _, _, files in os.walk(d):
+        if files:
+            return True
+    return False
+
+
+def extract_dataset(src, dst):
+    print("Extracting {}".format(src))
+    shutil.rmtree(dst, ignore_errors=True)
+    with tarfile.open(src, 'r:gz') as tf:
+        tf.extractall(dst)
 
 
 def load_d3mds(dataset, root=DATA_PATH, force_download=False):
