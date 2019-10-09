@@ -19,6 +19,14 @@ from mit_d3m.dataset import D3MDS
 from mit_d3m.loaders import get_loader
 from mit_d3m.metrics import METRICS_DICT
 
+__all__ = (
+    'DATA_PATH',
+    'BUCKET',
+    'load_d3mds',
+    'load_dataset',
+)
+
+
 DATA_PATH = 'data'
 BUCKET = 'd3m-data-dai'
 
@@ -30,9 +38,6 @@ def get_client():
     return client
 
 
-def download_dataset(bucket, dataset, root_dir):
-    client = get_client()
-    print("Downloading dataset {}".format(dataset))
 def get_dataset_tarfile_path(datapath, dataset):
     return os.path.join(datapath, '{dataset}.tar.gz'.format(dataset=dataset))
 
@@ -41,19 +46,16 @@ def get_dataset_dir(datapath, dataset):
     return os.path.join(datapath, dataset)
 
 
-    key = 'datasets/' + dataset + '.tar.gz'
-    filename = root_dir + '.tar.gz'
 def get_dataset_s3_key(dataset):
     return 'datasets/{dataset}.tar.gz'.format(dataset=dataset)
 
-    print("Getting file {} from S3 bucket {}".format(key, bucket))
+
+def download_dataset(bucket, key, filename):
+    print("Downloading dataset from s3:{bucket}".format(bucket=bucket))
+    client = get_client()
     client.download_file(Bucket=bucket, Key=key, Filename=filename)
 
-    shutil.rmtree(root_dir, ignore_errors=True)
 
-    print("Extracting {}".format(filename))
-    with tarfile.open(filename, 'r:gz') as tf:
-        tf.extractall(os.path.dirname(root_dir))
 def contains_files(d):
     for _, _, files in os.walk(d):
         if files:
@@ -69,35 +71,43 @@ def extract_dataset(src, dst):
 
 
 def load_d3mds(dataset, root=DATA_PATH, force_download=False):
+    if not os.path.exists(root):
+        os.makedirs(root)
+
     if dataset.endswith('_dataset_TRAIN'):
-        dataset = dataset[:-14]
+        dataset = dataset[:len('_dataset_TRAIN')]
 
-    root_dir = os.path.join(root, dataset)
+    dataset_dir = get_dataset_dir(root, dataset)
+    dataset_tarfile = get_dataset_tarfile_path(dataset_dir, dataset)
 
-    if root == DATA_PATH and (force_download or not os.path.exists(root_dir)):
-        if not os.path.exists(root_dir):
-            os.makedirs(root_dir)
+    if force_download or not os.path.exists(dataset_tarfile):
+        download_dataset(BUCKET, dataset, dataset_tarfile)
 
-        download_dataset(BUCKET, dataset, root_dir)
+    if force_download or not os.path.exists(dataset_dir) or not contains_files(dataset_dir):
+        extract_dataset(dataset_tarfile, dataset_dir)
 
-    phase_root = os.path.join(root_dir, 'TRAIN')
+    phase_root = os.path.join(dataset_dir, 'TRAIN')
     dataset_path = os.path.join(phase_root, 'dataset_TRAIN')
     problem_path = os.path.join(phase_root, 'problem_TRAIN')
 
     return D3MDS(dataset=dataset_path, problem=problem_path)
 
 
-def load_dataset(dataset, root=DATA_PATH, force_download=False):
+def load_dataset(dataset, root=DATA_PATH, force_download=False, ignore_memory_errors=False):
 
-    d3mds = load_d3mds(dataset, root, force_download)
+    d3mds = load_d3mds(dataset, root, force_download=force_download)
 
     loader = get_loader(
         d3mds.get_data_modality(),
         d3mds.get_task_type()
     )
 
-    dataset = loader.load(d3mds)
-
-    dataset.scorer = METRICS_DICT[d3mds.get_metric()]
+    dataset = None
+    try:
+        dataset = loader.load(d3mds)
+        dataset.scorer = METRICS_DICT[d3mds.get_metric()]
+    except MemoryError:
+        if not ignore_memory_errors:
+            raise
 
     return dataset
