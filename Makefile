@@ -88,14 +88,14 @@ install-develop: clean-build clean-pyc ## install the package in editable mode a
 
 .PHONY: lint
 lint: ## check style with flake8 and isort
-	flake8 mit_d3m
+	flake8 mit_d3m tests
 	isort -c --recursive mit_d3m
 
 .PHONY: fix-lint
 fix-lint: ## fix lint issues using autoflake, autopep8, and isort
-	find mit_d3m -name '*.py' | xargs autoflake --in-place --remove-all-unused-imports --remove-unused-variables
-	autopep8 --in-place --recursive --aggressive mit_d3m
-	isort --apply --atomic --recursive mit_d3m
+	find mit_d3m tests -name '*.py' | xargs autoflake --in-place --remove-all-unused-imports --remove-unused-variables
+	autopep8 --in-place --recursive --aggressive mit_d3m tests
+	isort --apply --atomic --recursive mit_d3m tests
 
 # TEST TARGETS
 
