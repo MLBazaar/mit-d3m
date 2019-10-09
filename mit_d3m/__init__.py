@@ -18,6 +18,7 @@ from funcy import memoize
 from mit_d3m.dataset import D3MDS
 from mit_d3m.loaders import get_loader
 from mit_d3m.metrics import METRICS_DICT
+from mit_d3m.utils import contains_files
 
 __all__ = (
     'DATA_PATH',
@@ -54,13 +55,6 @@ def download_dataset(bucket, key, filename):
     print("Downloading dataset from s3:{bucket}".format(bucket=bucket))
     client = get_client()
     client.download_file(Bucket=bucket, Key=key, Filename=filename)
-
-
-def contains_files(d):
-    for _, _, files in os.walk(d):
-        if files:
-            return True
-    return False
 
 
 def extract_dataset(src, dst):
