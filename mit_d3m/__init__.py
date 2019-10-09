@@ -52,7 +52,7 @@ def get_dataset_s3_key(dataset):
 
 
 def download_dataset(bucket, key, filename):
-    print("Downloading dataset from s3:{bucket}".format(bucket=bucket))
+    print("Downloading dataset from s3://{bucket}".format(bucket=bucket))
     client = get_client()
     client.download_file(Bucket=bucket, Key=key, Filename=filename)
 
