@@ -60,7 +60,8 @@ def download_dataset(bucket, key, filename):
 def extract_dataset(src, dst):
     print("Extracting {}".format(src))
     shutil.rmtree(dst, ignore_errors=True)
-    with tarfile.open(src, 'r:gz') as tf:
+    with open(src, 'r') as f:
+        tf = tarfile.TarFile(mode='r:gz', fileobj=f)
         tf.extractall(dst)
 
 
