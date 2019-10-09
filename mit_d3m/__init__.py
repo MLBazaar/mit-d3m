@@ -13,6 +13,7 @@ import tarfile
 import boto3
 import botocore
 import botocore.config
+from funcy import memoize
 
 from mit_d3m.dataset import D3MDS
 from mit_d3m.loaders import get_loader
@@ -22,6 +23,7 @@ DATA_PATH = 'data'
 BUCKET = 'd3m-data-dai'
 
 
+@memoize
 def get_client():
     config = botocore.config.Config(signature_version=botocore.UNSIGNED)
     client = boto3.client('s3', config=config)
