@@ -1,11 +1,11 @@
 import pathlib
-
 from unittest import TestCase, expectedFailure
-from unittest.mock import patch, mock_open, ANY
+from unittest.mock import ANY, mock_open, patch
 
 from mit_d3m import (
-    BUCKET, download_dataset, extract_dataset,
-    get_client, get_dataset_tarfile_path, get_dataset_dir, get_dataset_s3_key)
+    BUCKET, download_dataset, extract_dataset, get_client, get_dataset_dir, get_dataset_s3_key,
+    get_dataset_tarfile_path)
+
 
 class MitD3mTest(TestCase):
 
