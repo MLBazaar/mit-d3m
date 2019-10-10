@@ -88,7 +88,7 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
     return D3MDS(dataset=dataset_path, problem=problem_path)
 
 
-def load_dataset(dataset, root=DATA_PATH, force_download=False, ignore_memory_errors=False):
+def load_dataset(dataset, root=DATA_PATH, force_download=False):
 
     d3mds = load_d3mds(dataset, root, force_download=force_download)
 
@@ -97,12 +97,7 @@ def load_dataset(dataset, root=DATA_PATH, force_download=False, ignore_memory_er
         d3mds.get_task_type()
     )
 
-    dataset = None
-    try:
-        dataset = loader.load(d3mds)
-        dataset.scorer = METRICS_DICT[d3mds.get_metric()]
-    except MemoryError:
-        if not ignore_memory_errors:
-            raise
+    dataset = loader.load(d3mds)
+    dataset.scorer = METRICS_DICT[d3mds.get_metric()]
 
     return dataset
