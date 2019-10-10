@@ -43,11 +43,10 @@ class MitD3mTest(TestCase):
         download_dataset(bucket, key, filename)
         mock_download_file.assert_called_with(Bucket=bucket, Key=key, Filename=filename)
 
-    @patch('tarfile.TarFile')
-    @patch('mit_d3m.open', new_callable=mock_open)
+    @patch('tarfile.open')
     @patch('shutil.rmtree')
-    def test_extract_dataset(self, mock_rmtree, mock_open, mock_tarfile):
-        mock_extractall = mock_tarfile.return_value.extractall
+    def test_extract_dataset(self, mock_rmtree, mock_open)
+        mock_extractall = mock_open.return_value.__enter__.return_value.extractall
         src = '/foo/bar/things.tar.gz'
         dst = '/foo/bar/things'
         extract_dataset(src, dst)
