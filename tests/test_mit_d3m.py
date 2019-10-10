@@ -1,6 +1,6 @@
 import pathlib
 from unittest import TestCase, expectedFailure
-from unittest.mock import ANY, mock_open, patch
+from unittest.mock import ANY, patch
 
 from mit_d3m import (
     BUCKET, download_dataset, extract_dataset, get_client, get_dataset_dir, get_dataset_s3_key,
