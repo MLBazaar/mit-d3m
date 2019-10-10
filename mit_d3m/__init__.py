@@ -65,7 +65,9 @@ def extract_dataset(src, dst):
 
 
 def load_d3mds(dataset, root=DATA_PATH, force_download=False):
-    if not os.path.exists(root):
+    read_only = root != DATA_PATH
+
+    if not read_only and not os.path.exists(root):
         os.makedirs(root)
 
     if dataset.endswith('_dataset_TRAIN'):
@@ -75,10 +77,14 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
     dataset_tarfile = get_dataset_tarfile_path(dataset_dir, dataset)
     dataset_key = get_dataset_s3_key(dataset)
 
-    if force_download or not os.path.exists(dataset_tarfile):
+    requires_download = force_download or not os.path.exists(dataset_tarfile)
+    if not read_only and requires_download:
         download_dataset(BUCKET, dataset_key, dataset_tarfile)
 
-    if force_download or not os.path.exists(dataset_dir) or not contains_files(dataset_dir):
+    requires_extraction = (
+        force_download or not os.path.exists(dataset_dir) or not contains_files(dataset_dir)
+    )
+    if not read_only and requires_extraction:
         extract_dataset(dataset_tarfile, dataset_dir)
 
     phase_root = os.path.join(dataset_dir, 'TRAIN')
