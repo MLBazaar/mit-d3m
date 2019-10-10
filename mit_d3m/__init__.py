@@ -74,9 +74,10 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
 
     dataset_dir = get_dataset_dir(root, dataset)
     dataset_tarfile = get_dataset_tarfile_path(dataset_dir, dataset)
+    dataset_key = get_dataset_s3_key(dataset)
 
     if force_download or not os.path.exists(dataset_tarfile):
-        download_dataset(BUCKET, dataset, dataset_tarfile)
+        download_dataset(BUCKET, key, dataset_tarfile)
 
     if force_download or not os.path.exists(dataset_dir) or not contains_files(dataset_dir):
         extract_dataset(dataset_tarfile, dataset_dir)
