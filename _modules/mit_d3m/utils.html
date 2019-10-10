@@ -212,6 +212,14 @@
     <span class="k">return</span> <span class="n">path</span></div>
 
 
+<div class="viewcode-block" id="contains_files"><a class="viewcode-back" href="../../api/mit_d3m.utils.html#mit_d3m.utils.contains_files">[docs]</a><span class="k">def</span> <span class="nf">contains_files</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if a directory contains any normal files&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
 <div class="viewcode-block" id="used_memory"><a class="viewcode-back" href="../../api/mit_d3m.utils.html#mit_d3m.utils.used_memory">[docs]</a><span class="k">def</span> <span class="nf">used_memory</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span></div>
 
