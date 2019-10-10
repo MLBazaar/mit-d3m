@@ -35,8 +35,7 @@ BUCKET = 'd3m-data-dai'
 @memoize
 def get_client():
     config = botocore.config.Config(signature_version=botocore.UNSIGNED)
-    client = boto3.client('s3', config=config)
-    return client
+    return boto3.client('s3', config=config)
 
 
 def get_dataset_tarfile_path(datapath, dataset):
