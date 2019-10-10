@@ -11,6 +11,7 @@ with open('HISTORY.md') as history_file:
 
 install_requires = [
     'boto3>=1.9.27',
+    'funcy>=1.11',
     'keras>=2.2.4',
     'networkx>=2.1',
     'numpy>=1.15.2',
@@ -18,9 +19,6 @@ install_requires = [
     'psutil>=5.4.8',
     'pymongo>=3.7.2',
     'scikit-learn>=0.20.0',
-    'scipy>=1.1.0',
-    'tensorflow>=1.11.0',
-    'pillow>=6.1.0',
 ]
 
 setup_requires = [

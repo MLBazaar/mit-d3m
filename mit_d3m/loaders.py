@@ -22,10 +22,10 @@ class Dataset:
         self.context = context or dict()
 
     def __repr__(self):
-        attributes = ["'{}'".format(self.name)]
+        attributes = ['{!r}'.format(self.name)]
         for attribute in ['X', 'y', 'context']:
             if getattr(self, attribute) is not None:
-                attributes.append(attribute)
+                attributes.append(repr(attribute))
 
         return "Dataset({})".format(', '.join(attributes))
 

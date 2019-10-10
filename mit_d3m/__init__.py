@@ -11,46 +11,83 @@ import shutil
 import tarfile
 
 import boto3
+import botocore
+import botocore.config
+from funcy import memoize
 
 from mit_d3m.dataset import D3MDS
 from mit_d3m.loaders import get_loader
 from mit_d3m.metrics import METRICS_DICT
+from mit_d3m.utils import contains_files
 
-DATA_PATH = 'data'
+__all__ = (
+    'DATA_PATH',
+    'BUCKET',
+    'load_d3mds',
+    'load_dataset',
+)
+
+
 BUCKET = 'd3m-data-dai'
+DATA_PATH = 'data'
+DATASET_EXTRA_SUFFIX = '_dataset_TRAIN'
 
 
-def download_dataset(bucket, dataset, root_dir):
-    client = boto3.client('s3')
+@memoize
+def get_client():
+    config = botocore.config.Config(signature_version=botocore.UNSIGNED)
+    return boto3.client('s3', config=config)
 
-    print("Downloading dataset {}".format(dataset))
 
-    key = 'datasets/' + dataset + '.tar.gz'
-    filename = root_dir + '.tar.gz'
+def get_dataset_tarfile_path(datapath, dataset):
+    return os.path.join(datapath, '{dataset}.tar.gz'.format(dataset=dataset))
 
-    print("Getting file {} from S3 bucket {}".format(key, bucket))
+
+def get_dataset_dir(datapath, dataset):
+    return os.path.join(datapath, dataset)
+
+
+def get_dataset_s3_key(dataset):
+    return 'datasets/{dataset}.tar.gz'.format(dataset=dataset)
+
+
+def download_dataset(bucket, key, filename):
+    print("Downloading dataset from s3://{bucket}".format(bucket=bucket))
+    client = get_client()
     client.download_file(Bucket=bucket, Key=key, Filename=filename)
 
-    shutil.rmtree(root_dir, ignore_errors=True)
 
-    print("Extracting {}".format(filename))
-    with tarfile.open(filename, 'r:gz') as tf:
-        tf.extractall(os.path.dirname(root_dir))
+def extract_dataset(src, dst):
+    print("Extracting {}".format(src))
+    shutil.rmtree(dst, ignore_errors=True)
+    with tarfile.open(src, 'r:gz') as tf:
+        tf.extractall(dst)
 
 
 def load_d3mds(dataset, root=DATA_PATH, force_download=False):
-    if dataset.endswith('_dataset_TRAIN'):
-        dataset = dataset[:-14]
+    read_only = root != DATA_PATH
 
-    root_dir = os.path.join(root, dataset)
+    if not read_only and not os.path.exists(root):
+        os.makedirs(root)
 
-    if root == DATA_PATH and (force_download or not os.path.exists(root_dir)):
-        if not os.path.exists(root_dir):
-            os.makedirs(root_dir)
+    if dataset.endswith(DATASET_EXTRA_SUFFIX):
+        dataset = dataset[:len(DATASET_EXTRA_SUFFIX)]
 
-        download_dataset(BUCKET, dataset, root_dir)
+    dataset_dir = get_dataset_dir(root, dataset)
+    dataset_tarfile = get_dataset_tarfile_path(dataset_dir, dataset)
+    dataset_key = get_dataset_s3_key(dataset)
 
-    phase_root = os.path.join(root_dir, 'TRAIN')
+    requires_download = force_download or not os.path.exists(dataset_tarfile)
+    if not read_only and requires_download:
+        download_dataset(BUCKET, dataset_key, dataset_tarfile)
+
+    requires_extraction = (
+        force_download or not os.path.exists(dataset_dir) or not contains_files(dataset_dir)
+    )
+    if not read_only and requires_extraction:
+        extract_dataset(dataset_tarfile, dataset_dir)
+
+    phase_root = os.path.join(dataset_dir, 'TRAIN')
     dataset_path = os.path.join(phase_root, 'dataset_TRAIN')
     problem_path = os.path.join(phase_root, 'problem_TRAIN')
 
@@ -59,7 +96,7 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
 
 def load_dataset(dataset, root=DATA_PATH, force_download=False):
 
-    d3mds = load_d3mds(dataset, root, force_download)
+    d3mds = load_d3mds(dataset, root, force_download=force_download)
 
     loader = get_loader(
         d3mds.get_data_modality(),
@@ -67,7 +104,6 @@ def load_dataset(dataset, root=DATA_PATH, force_download=False):
     )
 
     dataset = loader.load(d3mds)
-
     dataset.scorer = METRICS_DICT[d3mds.get_metric()]
 
     return dataset
