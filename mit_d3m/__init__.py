@@ -28,8 +28,9 @@ __all__ = (
 )
 
 
-DATA_PATH = 'data'
 BUCKET = 'd3m-data-dai'
+DATA_PATH = 'data'
+DATASET_EXTRA_SUFFIX = '_dataset_TRAIN'
 
 
 @memoize
@@ -70,8 +71,8 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
     if not read_only and not os.path.exists(root):
         os.makedirs(root)
 
-    if dataset.endswith('_dataset_TRAIN'):
-        dataset = dataset[:len('_dataset_TRAIN')]
+    if dataset.endswith(DATASET_EXTRA_SUFFIX):
+        dataset = dataset[:len(DATASET_EXTRA_SUFFIX)]
 
     dataset_dir = get_dataset_dir(root, dataset)
     dataset_tarfile = get_dataset_tarfile_path(dataset_dir, dataset)
