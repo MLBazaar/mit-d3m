@@ -45,7 +45,7 @@ class MitD3mTest(TestCase):
 
     @patch('tarfile.open')
     @patch('shutil.rmtree')
-    def test_extract_dataset(self, mock_rmtree, mock_open)
+    def test_extract_dataset(self, mock_rmtree, mock_open):
         mock_extractall = mock_open.return_value.__enter__.return_value.extractall
         src = '/foo/bar/things.tar.gz'
         dst = '/foo/bar/things'
