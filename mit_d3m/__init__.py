@@ -80,7 +80,7 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
         dataset = dataset[:len(DATASET_EXTRA_SUFFIX)]
 
     dataset_dir = get_dataset_dir(root, dataset)
-    dataset_tarfile = get_dataset_tarfile_path(dataset_dir, dataset)
+    dataset_tarfile = get_dataset_tarfile_path(root, dataset)
     dataset_key = get_dataset_s3_key(dataset)
 
     requires_download = force_download or not os.path.exists(dataset_tarfile)
