@@ -91,7 +91,8 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
         force_download or not os.path.exists(dataset_dir) or not contains_files(dataset_dir)
     )
     if not read_only and requires_extraction:
-        extract_dataset(dataset_tarfile, dataset_dir)
+        dst = dataset_dir.parent  # TODO
+        extract_dataset(dataset_tarfile, dst)
 
     phase_root = os.path.join(dataset_dir, 'TRAIN')
     dataset_path = os.path.join(phase_root, 'dataset_TRAIN')
