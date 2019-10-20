@@ -35,7 +35,13 @@ DATASET_EXTRA_SUFFIX = '_dataset_TRAIN'
 
 @memoize
 def get_client():
-    config = botocore.config.Config(signature_version=botocore.UNSIGNED)
+    if boto3.Session().get_credentials():
+        # credentials available and will be detected automatically
+        config = None
+    else:
+        # no credentials, make unsigned requests
+        config = botocore.config.Config(signature_version=botocore.UNSIGNED)
+
     return boto3.client('s3', config=config)
 
 
