@@ -39,7 +39,7 @@ def get_client():
         # credentials available and will be detected automatically
         config = None
     else:
-        # no credentials, make unsigned requests
+        # no credentials available, make unsigned requests
         config = botocore.config.Config(signature_version=botocore.UNSIGNED)
 
     return boto3.client('s3', config=config)
@@ -58,19 +58,53 @@ def get_dataset_s3_key(dataset):
 
 
 def download_dataset(bucket, key, filename):
+    """Download dataset from s3://bucket/key to filename"""
     print("Downloading dataset from s3://{bucket}".format(bucket=bucket))
     client = get_client()
     client.download_file(Bucket=bucket, Key=key, Filename=filename)
 
 
 def extract_dataset(src, dst):
+    """Extract tarfile at src to within dst
+
+    Removes a directory at dst if such a directory exists. Note that the dataset archive
+    generally contains members with a common directory prefix, i.e. all the files for a dataset
+    named ``185_baseball`` have the common prefix ``185_baseball``. Thus after extraction, all
+    files will be underneath ``dst/185_baseball`` or similar.
+
+    Args:
+        src (path-like): path to tarfile, which should be gzipped
+        dst (path-like): path to destination directory
+
+    Raises:
+        ValueError: the source path is not a valid tarfile
+    """
     print("Extracting {}".format(src))
-    shutil.rmtree(dst, ignore_errors=True)
+
+    if not (os.path.exists(src) and tarfile.is_tarfile(src)):
+        raise ValueError('Invalid source path: {src}'.format(src=src))
+
+    if os.path.exists(dst) and os.path.isdir(dst):
+        shutil.rmtree(dst, ignore_errors=True)
+
+    os.makedirs(dst)
     with tarfile.open(src, 'r:gz') as tf:
         tf.extractall(dst)
 
 
 def load_d3mds(dataset, root=DATA_PATH, force_download=False):
+    """Load dataset into D3MDS format, as necessary downloading tarfile from S3 and extracting
+
+    Args:
+        dataset (str): dataset identifier
+        root (path-like, optional): root directory to store tarfiles and extracted datasets.
+            Defaults to './data/'.
+        force_download (boolean, optional): download the tarfile even if it already exists,
+            also causing the files to be re-extracted. Defaults to False.
+
+    Returns:
+        mit_d3m.dataset.D3MDS
+    """
     read_only = root != DATA_PATH
 
     if not read_only and not os.path.exists(root):
@@ -101,8 +135,19 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
 
 
 def load_dataset(dataset, root=DATA_PATH, force_download=False):
+    """Load dataset, as necessary downloading tarfile from S3 and extracting
 
-    d3mds = load_d3mds(dataset, root, force_download=force_download)
+    Args:
+        dataset (str): dataset identifier
+        root (path-like, optional): root directory to store tarfiles and extracted datasets.
+            Defaults to './data/'.
+        force_download (boolean, optional): download the tarfile even if it already exists,
+            also causing the files to be re-extracted. Defaults to False.
+
+    Returns:
+        mit_d3m.loaders.Dataset
+    """
+    d3mds = load_d3mds(dataset, root=root, force_download=force_download)
 
     loader = get_loader(
         d3mds.get_data_modality(),
