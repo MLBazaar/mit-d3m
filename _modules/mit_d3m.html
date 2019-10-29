@@ -230,7 +230,13 @@
 
 <span class="nd">@memoize</span>
 <span class="k">def</span> <span class="nf">get_client</span><span class="p">():</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">botocore</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="n">signature_version</span><span class="o">=</span><span class="n">botocore</span><span class="o">.</span><span class="n">UNSIGNED</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">boto3</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">get_credentials</span><span class="p">():</span>
+        <span class="c1"># credentials available and will be detected automatically</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># no credentials available, make unsigned requests</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">botocore</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="n">signature_version</span><span class="o">=</span><span class="n">botocore</span><span class="o">.</span><span class="n">UNSIGNED</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 
 
