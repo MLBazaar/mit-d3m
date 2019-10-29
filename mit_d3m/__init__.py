@@ -61,11 +61,6 @@ def download_dataset(bucket, key, filename):
 def extract_dataset(src, dst):
     """Extract tarfile at src to within dst
 
-    Removes a directory at dst if such a directory exists. Note that the dataset archive
-    generally contains members with a common directory prefix, i.e. all the files for a dataset
-    named ``185_baseball`` have the common prefix ``185_baseball``. Thus after extraction, all
-    files will be underneath ``dst/185_baseball`` or similar.
-
     Args:
         src (path-like): path to tarfile, which should be gzipped
         dst (path-like): path to destination directory
@@ -74,20 +69,16 @@ def extract_dataset(src, dst):
         ValueError: the source path is not a valid tarfile
     """
     print("Extracting {}".format(src))
-
     if not (os.path.exists(src) and tarfile.is_tarfile(src)):
-        raise ValueError('Invalid source path: {src}'.format(src=src))
-
-    if os.path.exists(dst) and os.path.isdir(dst):
-        shutil.rmtree(dst, ignore_errors=True)
-
-    os.makedirs(dst)
+        raise ValueError('Invalid source path: {}'.format(src))
     with tarfile.open(src, 'r:gz') as tf:
         tf.extractall(dst)
 
 
 def load_d3mds(dataset, root=DATA_PATH, force_download=False):
     """Load dataset into D3MDS format, as necessary downloading tarfile from S3 and extracting
+
+    If the root directory is
 
     Args:
         dataset (str): dataset identifier
@@ -119,9 +110,12 @@ def load_d3mds(dataset, root=DATA_PATH, force_download=False):
         force_download or not os.path.exists(dataset_dir) or not contains_files(dataset_dir)
     )
     if not read_only and requires_extraction:
-        extract_dataset(dataset_tarfile, dataset_dir)
+        if os.path.exists(dataset_dir) and os.path.isdir(dataset_dir):
+            # probably was an error in a previous extraction attempt
+            shutil.rmtree(dataset_dir, ignore_errors=True)
+        extract_dataset(dataset_tarfile, root)
 
-    phase_root = os.path.join(dataset_dir, dataset, 'TRAIN')
+    phase_root = os.path.join(dataset_dir, 'TRAIN')
     dataset_path = os.path.join(phase_root, 'dataset_TRAIN')
     problem_path = os.path.join(phase_root, 'problem_TRAIN')
 
