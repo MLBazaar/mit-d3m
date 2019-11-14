@@ -256,7 +256,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">dsHome</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
             <span class="n">_dsDoc</span> <span class="o">=</span> <span class="n">dataset</span>
 
-        <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_dsDoc</span><span class="p">),</span> <span class="n">_dsDoc</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_dsDoc</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;Error: Expected to find datasetDoc.json at path </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">_dsDoc</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
+
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_dsDoc</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dsDoc</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
@@ -410,7 +413,9 @@
 
             <span class="c1"># read the schema in prHome</span>
             <span class="n">_prDoc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prHome</span><span class="p">,</span> <span class="s1">&#39;problemDoc.json&#39;</span><span class="p">)</span>
-            <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_prDoc</span><span class="p">),</span> <span class="n">_prDoc</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_prDoc</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;Error: Expected to find problemDoc.json at path </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">_prDoc</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_prDoc</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">prDoc</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 

@@ -225,22 +225,53 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#mit_d3m.load_d3mds" title="mit_d3m.load_d3mds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_d3mds</span></code></a>(dataset[, root, force_download])</p></td>
-<td><p></p></td>
+<td><p>Load dataset into D3MDS format, as necessary downloading tarfile from S3 and extracting</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#mit_d3m.load_dataset" title="mit_d3m.load_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_dataset</span></code></a>(dataset[, root, force_download])</p></td>
-<td><p></p></td>
+<td><p>Load dataset, as necessary downloading tarfile from S3 and extracting</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="mit_d3m.load_d3mds">
 <code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">load_d3mds</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">root='data'</em>, <em class="sig-param">force_download=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#load_d3mds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.load_d3mds" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Load dataset into D3MDS format, as necessary downloading tarfile from S3 and extracting</p>
+<p>If the root directory is</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>str</em>) – dataset identifier</p></li>
+<li><p><strong>root</strong> (<em>path-like</em><em>, </em><em>optional</em>) – root directory to store tarfiles and extracted datasets.
+Defaults to ‘./data/’.</p></li>
+<li><p><strong>force_download</strong> (<em>boolean</em><em>, </em><em>optional</em>) – download the tarfile even if it already exists,
+also causing the files to be re-extracted. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mit_d3m.dataset.D3MDS</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="mit_d3m.load_dataset">
 <code class="sig-prename descclassname">mit_d3m.</code><code class="sig-name descname">load_dataset</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">root='data'</em>, <em class="sig-param">force_download=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mit_d3m.html#load_dataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mit_d3m.load_dataset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Load dataset, as necessary downloading tarfile from S3 and extracting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>str</em>) – dataset identifier</p></li>
+<li><p><strong>root</strong> (<em>path-like</em><em>, </em><em>optional</em>) – root directory to store tarfiles and extracted datasets.
+Defaults to ‘./data/’.</p></li>
+<li><p><strong>force_download</strong> (<em>boolean</em><em>, </em><em>optional</em>) – download the tarfile even if it already exists,
+also causing the files to be re-extracted. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mit_d3m.loaders.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </div>
