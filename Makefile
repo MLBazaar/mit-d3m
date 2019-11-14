@@ -173,9 +173,9 @@ test-bumpversion-patch: ## Merge stable to master and bumpversion patch
 	git merge stable
 	bumpversion --no-tag patch
 
-.PHONY: bumpversion-build
-bumpversion-build: ## Bump the version to the next build
-	bumpversion build --no-tag
+.PHONY: bumpversion-candidate
+bumpversion-candidate: ## Bump the version to the next candidate
+	bumpversion candidate --no-tag
 
 .PHONY: bumpversion-minor
 bumpversion-minor: ## Bump the version the next minor skipping the release
@@ -206,8 +206,8 @@ check-release: check-master check-history ## Check if the release can be made
 .PHONY: release
 release: check-release bumpversion-release publish bumpversion-patch
 
-.PHONY: release-build
-release-build: check-master publish bumpversion-build
+.PHONY: release-candidate
+release-candidate: check-master publish bumpversion-candidate
 
 .PHONY: release-minor
 release-minor: check-release bumpversion-minor release
