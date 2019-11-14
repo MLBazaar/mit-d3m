@@ -15,6 +15,14 @@ def make_abs(path, base_dir=None):
     return path
 
 
+def contains_files(d):
+    """Check if a directory contains any normal files"""
+    for _, _, files in os.walk(d):
+        if files:
+            return True
+    return False
+
+
 def used_memory():
     return psutil.Process(os.getpid()).memory_info().rss
 

@@ -11,6 +11,7 @@ with open('HISTORY.md') as history_file:
 
 install_requires = [
     'boto3>=1.9.27',
+    'funcy>=1.11',
     'keras>=2.2.4',
     'networkx>=2.1',
     'numpy>=1.15.2',
@@ -18,9 +19,7 @@ install_requires = [
     'psutil>=5.4.8',
     'pymongo>=3.7.2',
     'scikit-learn>=0.20.0',
-    'scipy>=1.1.0',
-    'tensorflow>=1.11.0',
-    'pillow>=6.1.0',
+    'python-dateutil>=2.1,<2.8.1'    # botocore requirement
 ]
 
 setup_requires = [
@@ -94,6 +93,6 @@ setup(
     test_suite='tests',
     tests_require=tests_require,
     url='https://github.com/HDI-Project/mit-d3m',
-    version='0.2.0',
+    version='0.2.1.dev0',
     zip_safe=False,
 )

@@ -59,7 +59,10 @@ class D3MDataset:
             self.dsHome = os.path.dirname(dataset)
             _dsDoc = dataset
 
-        assert os.path.exists(_dsDoc), _dsDoc
+        if not os.path.exists(_dsDoc):
+            logger.critical('Error: Expected to find datasetDoc.json at path %s', _dsDoc)
+            raise FileNotFoundError
+
         with open(_dsDoc, 'r') as f:
             self.dsDoc = json.load(f)
 
@@ -213,7 +216,9 @@ class D3MProblem:
 
             # read the schema in prHome
             _prDoc = os.path.join(self.prHome, 'problemDoc.json')
-            assert os.path.exists(_prDoc), _prDoc
+            if not os.path.exists(_prDoc):
+                logger.critical('Error: Expected to find problemDoc.json at path %s', _prDoc)
+                raise FileNotFoundError
             with open(_prDoc, 'r') as f:
                 self.prDoc = json.load(f)
 
