@@ -19,6 +19,7 @@ install_requires = [
     'psutil>=5.4.8',
     'pymongo>=3.7.2',
     'scikit-learn>=0.20.0',
+    'python-dateutil>=2.1,<2.8.1'    # botocore requirement
 ]
 
 setup_requires = [
