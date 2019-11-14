@@ -1,5 +1,12 @@
 # History
 
+## 0.2.1
+
+* Support downloading public datasets withouth requiring an AWS account
+* Imporoved error messages
+* Internal code cleanup
+* Initial unit test suite
+
 ## 0.2.0
 
 * `disk_usage` fails on macOS/BSD with human=True
