@@ -3,7 +3,7 @@
 <i>An open source project from Data to AI Lab at MIT.</i>
 </p>
 
-
+[![Development Status](https://img.shields.io/badge/Development%20Status-2%20--%20Pre--Alpha-yellow)](https://pypi.org/search/?c=Development+Status+%3A%3A+2+-+Pre-Alpha)
 [![Travis](https://travis-ci.org/HDI-Project/mit-d3m.svg?branch=master)](https://travis-ci.org/HDI-Project/mit-d3m)
 [![PyPi Shield](https://img.shields.io/pypi/v/mit-d3m.svg)](https://pypi.python.org/pypi/mit-d3m)
 
@@ -11,6 +11,7 @@
 # mit-d3m
 
 - License: MIT
+- Development Status: [Pre-Alpha](https://pypi.org/search/?c=Development+Status+%3A%3A+2+-+Pre-Alpha)
 - Documentation: https://HDI-Project.github.io/mit-d3m/
 - Homepage: https://github.com/HDI-Project/mit-d3m
 
