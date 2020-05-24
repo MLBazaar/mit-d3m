@@ -454,10 +454,11 @@ class ImageLoader(ResourceLoader):
             image = image.resize(self.INPUT_SHAPE)
             image = img_to_array(image)
             image = image / 255.0  # Quantize images.
-            images[i,:,:,:] = image
+            images[i, :, :, :] = image
 
         return images
 
+    
 class TextLoader(ResourceLoader):
 
     def load_resources(self, X, resource_column, d3mds):
