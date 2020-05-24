@@ -451,7 +451,7 @@ class ImageLoader(ResourceLoader):
 
             filename = os.path.join(image_dir, filename)
             image = load_img(filename)
-            image = image.resize(self.INPUT_SHAPE)
+            image = image.resize(self.INPUT_SHAPE[:2])
             image = img_to_array(image)
             image = image / 255.0  # Quantize images.
             images[i, :, :, :] = image
