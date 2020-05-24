@@ -434,7 +434,7 @@ class ResourceLoader(Loader):
 
 class ImageLoader(ResourceLoader):
 
-    INPUT_SHAPE = [224, 224, 3]
+    INPUT_SHAPE = (224, 224, 3)
     EPOCHS = 1
 
     def load_resources(self, X, resource_column, d3mds):
@@ -443,21 +443,20 @@ class ImageLoader(ResourceLoader):
         LOGGER.info("Loading %s images", len(X))
 
         image_dir = d3mds.get_resources_dir('image')
-        images = []
+        images = np.empty((len(X), *self.INPUT_SHAPE), dtype=np.float32)
 
-        for filename in X[resource_column]:
+        for i, filename in enumerate(X[resource_column]):
             if used_memory() > available_memory():
                 raise MemoryError()
 
             filename = os.path.join(image_dir, filename)
             image = load_img(filename)
-            image = image.resize(tuple(self.INPUT_SHAPE[0:2]))
+            image = image.resize(self.INPUT_SHAPE)
             image = img_to_array(image)
             image = image / 255.0  # Quantize images.
-            images.append(image)
+            images[i,:,:,:] = image
 
-        return np.array(images)
-
+        return images
 
 class TextLoader(ResourceLoader):
 
