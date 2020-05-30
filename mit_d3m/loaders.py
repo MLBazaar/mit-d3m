@@ -458,7 +458,7 @@ class ImageLoader(ResourceLoader):
 
         return images
 
-    
+
 class TextLoader(ResourceLoader):
 
     def load_resources(self, X, resource_column, d3mds):
