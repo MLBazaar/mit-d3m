@@ -12,7 +12,7 @@ with open('HISTORY.md') as history_file:
 install_requires = [
     'boto3>=1.9.27',
     'funcy>=1.11',
-    'keras-preprocessing>=1.1.2',
+    'keras-preprocessing[image]>=1.1.2',
     'networkx>=2.1',
     'numpy>=1.15.2',
     'pandas>=0.23.4',
