@@ -438,7 +438,7 @@ class ImageLoader(ResourceLoader):
     EPOCHS = 1
 
     def load_resources(self, X, resource_column, d3mds):
-        from keras.preprocessing.image import img_to_array, load_img  # noqa
+        from keras_preprocessing.image import img_to_array, load_img  # noqa
 
         LOGGER.info("Loading %s images", len(X))
 
