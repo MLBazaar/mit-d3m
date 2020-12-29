@@ -12,8 +12,8 @@
 
 - License: MIT
 - Development Status: [Pre-Alpha](https://pypi.org/search/?c=Development+Status+%3A%3A+2+-+Pre-Alpha)
-- Documentation: https://HDI-Project.github.io/mit-d3m/
-- Homepage: https://github.com/HDI-Project/mit-d3m
+- Documentation: https://mlbazaar.github.io/mit-d3m
+- Homepage: https://github.com/MLBazaar/mit-d3m
 
 # Overview
 
@@ -61,7 +61,7 @@ Alternatively, with your virtualenv activated, you can clone the repository and 
 source by running `make install` on the `stable` branch:
 
 ```bash
-git clone git@github.com:HDI-Project/mit-d3m.git
+git clone git@github.com:MLBazaar/mit-d3m.git
 cd mit-d3m
 git checkout stable
 make install
