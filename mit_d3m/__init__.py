@@ -78,7 +78,26 @@ def extract_dataset(src, dst):
     if not (os.path.exists(src) and tarfile.is_tarfile(src)):
         raise ValueError('Invalid source path: {}'.format(src))
     with tarfile.open(src, 'r:gz') as tf:
-        tf.extractall(dst)
+        def is_within_directory(directory, target):
+            
+            abs_directory = os.path.abspath(directory)
+            abs_target = os.path.abspath(target)
+        
+            prefix = os.path.commonprefix([abs_directory, abs_target])
+            
+            return prefix == abs_directory
+        
+        def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+        
+            for member in tar.getmembers():
+                member_path = os.path.join(path, member.name)
+                if not is_within_directory(path, member_path):
+                    raise Exception("Attempted Path Traversal in Tar File")
+        
+            tar.extractall(path, members, numeric_owner=numeric_owner) 
+            
+        
+        safe_extract(tf, dst)
 
 
 def load_d3mds(dataset, root=DATA_PATH, force_download=False):
